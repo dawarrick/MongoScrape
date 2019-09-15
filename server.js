@@ -41,69 +41,44 @@ app.get("/scrape", function (req, res) {
     // Then, we load that into cheerio and save it to $ for a shorthand selector
     var $ = cheerio.load(response.data);
 
-    // Now, we grab every h2 within an article tag, and do the following:
+    // Now, we grab every contentWrap, which is the unique part per article and parse
 
-  /*  $(".articles-list.item").each(function (i, element) {
+    $(".contentWrap").each(function (i, element) {
       // Save an empty result object
-     // $(".item").each(function (i1, element1) {
-        var result = {};
-        // Add the text and href of every link, and save them as properties of the result object
-        result.link = $(this)
-          .children("a")
-          .attr("href");
-        result.thumbnail = $(this)
-          .children("a").children(".thumbnail").children(".responsiveImg").attr("data-img-200");
-        result.title = $(this)
-          .children("a").children(".contentWrap").children(".title")
-          .text();
-        result.summary = $(this)
-          .children("a").children(".contentWrap").children(".preview")
-          .text();
+      var result = {};
+      // Add the text and href of every link, and save them as properties of the result object
+      result.title = $(this)
+        .children(".title")
+        .text();
+      result.summary = $(this)
+        .children(".preview")
+        .text();
+      result.thumbnail = $(this)
+        .parent().children(".thumbnail").children(".responsiveImg").attr("data-img-200");
+      result.link = $(this)
+        .parent("a")
+        .attr("href");
 
-        // Create a new Article using the `result` object built from scraping
-        db.Article.create(result)
-          .then(function (dbArticle) {
-            // View the added result in the console
-            console.log(dbArticle);
-          })
-          .catch(function (err) {
-            // If an error occurred, log it
-            console.log(err);
+      //they should at least have a title and a link
+      if (result.title && result.link) {
+        //Create a new one if it doesn't exist, or update an existing in case something changed with the article
+        db.Article.update(
+          { title: result.title }, // query
+          { $set: result }, // replacement, replaces only the field "hi"
+          { upsert: true }, // options
+          function (err, object) {
+            if (err) {
+              console.warn(err.message);  // returns error if no matching object found
+            } else {
+              console.dir(object);
+            }
           });
-     // });
-    });*/
-     $(".contentWrap").each(function (i, element) {
-       // Save an empty result object
-       var result = {};
-       // Add the text and href of every link, and save them as properties of the result object
-       result.title = $(this)
-         .children(".title")
-         .text();
-       result.summary = $(this)
-         .children(".preview")
-         .text();
-       result.thumbnail = $(this)
-         .parent().children(".thumbnail").children(".responsiveImg").attr("data-img-200");
-       result.link = $(this)
-         .parent("a")
-         .attr("href");
- 
-       // Create a new Article using the `result` object built from scraping
-       db.Article.create(result)
-         .then(function (dbArticle) {
-           // View the added result in the console
-           console.log(dbArticle);
-         })
-         .catch(function (err) {
-           // If an error occurred, log it
-           console.log(err);
-         });
-     });
+      }
+    });
 
     // Send a message to the client
     res.send("Scrape Complete");
-    //res.send(result);
-    //console.log(response.data);
+
   });
 });
 
