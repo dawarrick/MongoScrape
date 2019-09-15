@@ -1,9 +1,12 @@
+require("dotenv").config();
 var express = require("express");
 var logger = require("morgan");
 var mongoose = require("mongoose");
 
-//this is required because of a deprecation issue
+//these are required because of a deprecation issues to stop error message in server
 mongoose.set('useUnifiedTopology', true);
+mongoose.set('useCreateIndex', true);
+
 
 // Our scraping tools
 // Axios is a promised-based http library, similar to jQuery's Ajax method
@@ -19,6 +22,16 @@ var PORT = 3000;
 // Initialize Express
 var app = express();
 
+// Handlebars
+var exphbs = require("express-handlebars");
+app.engine(
+  "handlebars",
+  exphbs({
+    defaultLayout: "main"
+  })
+);
+app.set("view engine", "handlebars");
+
 // Configure middleware
 
 // Use morgan logger for logging requests
@@ -30,11 +43,17 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/MongoScrape", { useNewUrlParser: true });
+//mongoose.connect("mongodb://localhost/MongoScrape", { useNewUrlParser: true });
+
+// If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/MongoScrape";
+
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
 // Routes
 
 // A GET route for scraping the echoJS website
+//this will be the default route
 app.get("/scrape", function (req, res) {
   // First, we grab the body of the html with axios
   axios.get("https://news.richmond.edu/releases/index.html").then(function (response) {
@@ -62,9 +81,9 @@ app.get("/scrape", function (req, res) {
       //they should at least have a title and a link
       if (result.title && result.link) {
         //Create a new one if it doesn't exist, or update an existing in case something changed with the article
-        db.Article.update(
+        db.Article.updateOne(
           { title: result.title }, // query
-          { $set: result }, // replacement, replaces only the field "hi"
+          { $set: result }, 
           { upsert: true }, // options
           function (err, object) {
             if (err) {
@@ -75,20 +94,21 @@ app.get("/scrape", function (req, res) {
           });
       }
     });
-
     // Send a message to the client
-    res.send("Scrape Complete");
-
+     res.send('scraped');
   });
 });
 
 // Route for getting all Articles from the db
-app.get("/articles", function (req, res) {
+app.get("/", function (req, res) {
   // Grab every document in the Articles collection
   db.Article.find({})
     .then(function (dbArticle) {
       // If we were able to successfully find Articles, send them back to the client
-      res.json(dbArticle);
+      // res.json(dbArticle);
+      res.render("index", {
+        articles: dbArticle
+      });
     })
     .catch(function (err) {
       // If an error occurred, send it to the client
@@ -104,7 +124,9 @@ app.get("/articles/:id", function (req, res) {
     .populate("note")
     .then(function (dbArticle) {
       // If we were able to successfully find an Article with the given id, send it back to the client
-      res.json(dbArticle);
+      res.render("index", {
+        articles: dbArticle
+      });
     })
     .catch(function (err) {
       // If an error occurred, send it to the client
@@ -124,7 +146,9 @@ app.post("/articles/:id", function (req, res) {
     })
     .then(function (dbArticle) {
       // If we were able to successfully update an Article, send it back to the client
-      res.json(dbArticle);
+      res.render("index", {
+        articles: dbArticle
+      });
     })
     .catch(function (err) {
       // If an error occurred, send it to the client
