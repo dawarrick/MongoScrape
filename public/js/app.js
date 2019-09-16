@@ -19,7 +19,7 @@ function initialize() {
     .then(function (data) {
       $.ajax({
         method: "GET",
-        url: "/"
+        url: "/articles"
       });
     });
 }
@@ -90,11 +90,4 @@ $(document).ready(function () {
     $("#bodyinput").val("");
   });
 
-  // search for the car table.
-  $("#searchInput").on("keyup", function () {
-    var value = $(this).val().toLowerCase();
-    $("#article-table .cols").filter(function () {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
-    });
-  });
 });

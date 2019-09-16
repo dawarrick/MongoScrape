@@ -83,7 +83,7 @@ app.get("/scrape", function (req, res) {
         //Create a new one if it doesn't exist, or update an existing in case something changed with the article
         db.Article.updateOne(
           { title: result.title }, // query
-          { $set: result }, 
+          { $set: result },
           { upsert: true }, // options
           function (err, object) {
             if (err) {
@@ -95,11 +95,28 @@ app.get("/scrape", function (req, res) {
       }
     });
     // Send a message to the client
-     res.send('scraped');
+   res.send("bedone");
   });
 });
 
 // Route for getting all Articles from the db
+app.get("/", function (req, res) {
+  // Grab every document in the Articles collection
+  db.Article.find({})
+    .then(function (dbArticle) {
+      // If we were able to successfully find Articles, send them back to the client
+      // res.json(dbArticle);
+      res.render("index", {
+        articles: dbArticle
+      });
+    })
+    .catch(function (err) {
+      // If an error occurred, send it to the client
+      res.json(err);
+    });
+});
+
+// Route for getting this thing started
 app.get("/", function (req, res) {
   // Grab every document in the Articles collection
   db.Article.find({})
