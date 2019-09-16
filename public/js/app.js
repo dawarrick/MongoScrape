@@ -15,17 +15,17 @@ function scrapeandload() {
   $.ajax({
     method: "GET",
     url: "/scrape"
-  })
-    // With that done, load the articles
-    .then(function (data) {
-      $.ajax({
-        method: "GET",
-        url: "/"
-      })
-      .then(function() {
-      console.log('initialize 2')
-      });
-    });
+  });
+  // With that done, load the articles
+  /*   .then(function (data) {
+       document.location = '/';
+            $.ajax({
+              method: "GET",
+              url: "/articles"
+            })
+            .then(function() {
+            console.log('initialize 2')
+            });*/
 }
 
 $(document).ready(function () {

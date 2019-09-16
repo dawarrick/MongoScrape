@@ -24,7 +24,7 @@
 }   
 
 p {
-  width: 110%;
+  max-width: 100%;
   padding-top:5px;
   color: rgb(17, 17, 85);
 }
@@ -49,10 +49,11 @@ p {
     float:left;
   }
 
-  #scrape {
+  #commentsbtn {
     background-color: rgb(17, 17, 85);
     color: white;
-  }*/
+    float:right;
+  }
   
   /* Jumbotron 
 .jumbotron {
