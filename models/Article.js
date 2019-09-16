@@ -16,19 +16,20 @@ var ArticleSchema = new Schema({
     type: String,
     required: true
   },
+  //does not always exist
   thumbnail: {
     type: String,
     required: false
   },
-  // `link` is required and of type String
+  //link to the article
   link: {
     type: String,
     required: true
   },
+  //this is the date it was originally added, or if it was updated.
   dateAdded: {
     type: Date,
-    required: true,
-    immutable: true
+    required: true
   },
   // `note` is an object that stores a Note id
   // The ref property links the ObjectId to the Note model

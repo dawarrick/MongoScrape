@@ -66,13 +66,13 @@ app.get("/", function (req, res) {
     var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
     var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 
-    console.log(date+time)
+    console.log(date + time)
     // Now, we grab every contentWrap, which is the unique part per article and parse
 
     $(".contentWrap").each(function (i, element) {
       // Save an empty result object
       var result = {};
-      // Add the text and href of every link, and save them as properties of the result object
+      // Add the title, summary, href link, thumbnail (does not always exist) and href of every link
       result.title = $(this)
         .children(".title")
         .text();
@@ -85,39 +85,41 @@ app.get("/", function (req, res) {
         .parent("a")
         .attr("href");
       //I want all that are added together to have the same date for sorting.
-      result.dateAdded = date + ' '+time;
+      result.dateAdded = date + ' ' + time;
       //they should at least have a title and a link
       if (result.title && result.link) {
         //Create a new one if it doesn't exist, or update an existing in case something changed with the article
-        /*       db.Article.updateOne(
-                 { title: result.title }, // query
-                 { $set: result },
-                 {
-                   upsert: true,
-                   setDefaultsOnInsert: true
-                 }, // options
-                 function (err, object) {
-                   if (err) {
-                     console.warn(err.message);  // returns error if no matching object found
-                   } else {
-                     console.dir(object);
-                   }
-                 });*/
-      //using create because update and insert was too slow. Also issue with date insert
+        //title is unique identifier
+        /*              db.Article.updateOne(
+                        { title: result.title }, // query
+                        { $set: result },
+                        { upsert: true,
+                          setDefaultsOnInsert: true
+                        }, // options
+                        function (err, object) {
+                          if (err) {
+                            console.warn(err.message);  // returns error if no matching object found
+                          } else {
+                            console.dir(object);
+                          }
+                        });*/
+        //using create because update and insert was updating the date added and messing up the sorting.
         db.Article.create(result)
           .then(function (dbArticle) {
             // View the added result in the console
             console.log(dbArticle);
           })
           .catch(function (err) {
-            // If an error occurred, log it
-            console.log(err);
+            // If an error occurred, log it except if it's a duplicate issue (11000)
+            if (err.code !== 11000) {
+              console.log(err);
+            }
           });
       }
     });
     // Send a message to the client
-   // res.send("scraped");
-   res.redirect('/articles');
+    // res.send("scraped");
+    res.redirect('/articles');
   });
 });
 
@@ -155,24 +157,6 @@ app.get("/articles", function (req, res) {
     });
 });
 
-
-// Route for getting this thing started
-/*app.get("/", function (req, res) {
-  // Grab every document in the Articles collection
-  console.log('getting all articles')
-  db.Article.find({})
-    .then(function (dbArticle) {
-      // If we were able to successfully find Articles, send them back to the client
-      // res.json(dbArticle);
-      res.render("index", {
-        articles: dbArticle
-      });
-    })
-    .catch(function (err) {
-      // If an error occurred, send it to the client
-      res.json(err);
-    });
-});*/
 
 // Route for grabbing a specific Article by id, populate it with it's note
 app.get("/articles/:id", function (req, res) {
