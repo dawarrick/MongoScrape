@@ -19,13 +19,12 @@
 }
 
 .summary {
-  color: black;
   font-size: 15px;
   padding-left:0;
 }   
 
 p {
-  width: 50em;
+  width: 110%;
   padding-top:5px;
   color: rgb(17, 17, 85);
 }
@@ -44,11 +43,16 @@ p {
   }
 
   .spider {
-    width:50px;
+    width:55px;
     height:45px;
     padding-right: 20px;
     float:left;
   }
+
+  #scrape {
+    background-color: rgb(17, 17, 85);
+    color: white;
+  }*/
   
   /* Jumbotron 
 .jumbotron {

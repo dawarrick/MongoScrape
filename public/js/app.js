@@ -9,23 +9,27 @@ $.getJSON("/articles", function(data) {
 });*/
 
 //first time in, scrape and display
-function initialize() {
+function scrapeandload() {
   //going to 
+  console.log('initialize 1')
   $.ajax({
     method: "GET",
     url: "/scrape"
   })
-    // With that done, add the note information to the page
+    // With that done, load the articles
     .then(function (data) {
       $.ajax({
         method: "GET",
-        url: "/articles"
+        url: "/"
+      })
+      .then(function() {
+      console.log('initialize 2')
       });
     });
 }
 
 $(document).ready(function () {
-  initialize();
+  //initialize();
 
   // Whenever someone clicks a p tag
   $(document).on("click", "p", function () {
@@ -59,6 +63,10 @@ $(document).ready(function () {
           $("#bodyinput").val(data.note.body);
         }
       });
+  });
+
+  $(document).off().on("click", "#scrape", function () {
+    scrapeandload();
   });
 
   // When you click the savenote button

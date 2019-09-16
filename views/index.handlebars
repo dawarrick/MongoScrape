@@ -17,12 +17,17 @@
     </div-->
     <br>
 
+<!--trigger the scrape of new articles-->
+    <div class="custom-control-inline scrapebutton" style="padding-left:5em">
+      <button type="button" class="btn btn-lg" id="scrape">Scrape</button>
+    </div>
+
     <!-- Table -->
     <div class="row">
       <div class="col-md-12">
         <div class="card mb-4">
           <div class="card-header"><img class="img-responsive mx-auto d-block spider" src="/images/spider.png">
-          <div>University of Richmond Spider's in the News</div>
+            <div>University of Richmond Spider's in the News</div>
           </div>
           <div class="card-body">
             <table id="article-table" class="table table-hover display">
@@ -34,13 +39,15 @@
                     {{#if thumbnail}}
                     <img class="img-fluid mx-auto d-block thumbnail" src={{this.thumbnail}} alt="">
                     {{else}}
-                     <img class="img-fluid mx-auto d-block urshield" src="/images/shieldSmall.png" alt="">
+                    <img class="img-fluid mx-auto d-block urshield" src="/images/shieldSmall.png" alt="">
                     {{/if}}
                   </div>
                   <div class="col-lg-9 title cols" id="titlelink{{this.id}}"><a target="_blank"
                       href={{this.link}}>{{this.title}}</a>
                     <div class="col-lg-3"></div>
-                    <div class="col-lg-8 summary cols" id="summary{{this.id}}"><p>{{this.summary}}</p></div>
+                    <div class="col-lg-8 summary cols" id="summary{{this.id}}">
+                      <p>{{this.summary}}</p>
+                    </div>
                   </div>
                 </div>
                 <hr>

@@ -55,11 +55,18 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 // A GET route for scraping the echoJS website
 //this will be the default route
 app.get("/scrape", function (req, res) {
+  console.log('scraping');
   // First, we grab the body of the html with axios
   axios.get("https://news.richmond.edu/releases/index.html").then(function (response) {
     // Then, we load that into cheerio and save it to $ for a shorthand selector
     var $ = cheerio.load(response.data);
 
+    var counter = 0;  //track number added
+    var today = new Date();
+    var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+
+    console.log(date+time)
     // Now, we grab every contentWrap, which is the unique part per article and parse
 
     $(".contentWrap").each(function (i, element) {
@@ -77,32 +84,46 @@ app.get("/scrape", function (req, res) {
       result.link = $(this)
         .parent("a")
         .attr("href");
-
+      //I want all that are added together to have the same date for sorting.
+      result.dateAdded = date + ' '+time;
       //they should at least have a title and a link
       if (result.title && result.link) {
         //Create a new one if it doesn't exist, or update an existing in case something changed with the article
-        db.Article.updateOne(
-          { title: result.title }, // query
-          { $set: result },
-          { upsert: true }, // options
-          function (err, object) {
-            if (err) {
-              console.warn(err.message);  // returns error if no matching object found
-            } else {
-              console.dir(object);
-            }
+        /*       db.Article.updateOne(
+                 { title: result.title }, // query
+                 { $set: result },
+                 {
+                   upsert: true,
+                   setDefaultsOnInsert: true
+                 }, // options
+                 function (err, object) {
+                   if (err) {
+                     console.warn(err.message);  // returns error if no matching object found
+                   } else {
+                     console.dir(object);
+                   }
+                 });*/
+      //using create because update and insert was too slow. Also issue with date insert
+        db.Article.create(result)
+          .then(function (dbArticle) {
+            // View the added result in the console
+            console.log(dbArticle);
+          })
+          .catch(function (err) {
+            // If an error occurred, log it
+            console.log(err);
           });
       }
     });
     // Send a message to the client
-   res.send("bedone");
+    res.send("scraped");
   });
 });
 
 // Route for getting all Articles from the db
 app.get("/", function (req, res) {
-  // Grab every document in the Articles collection
-  db.Article.find({})
+  // Grab every document in the Articles collection. Sort by the most recent first
+  db.Article.find({}).sort({ dateAdded: -1, _id: 1 })
     .then(function (dbArticle) {
       // If we were able to successfully find Articles, send them back to the client
       // res.json(dbArticle);
@@ -116,9 +137,11 @@ app.get("/", function (req, res) {
     });
 });
 
+
 // Route for getting this thing started
-app.get("/", function (req, res) {
+/*app.get("/", function (req, res) {
   // Grab every document in the Articles collection
+  console.log('getting all articles')
   db.Article.find({})
     .then(function (dbArticle) {
       // If we were able to successfully find Articles, send them back to the client
@@ -131,7 +154,7 @@ app.get("/", function (req, res) {
       // If an error occurred, send it to the client
       res.json(err);
     });
-});
+});*/
 
 // Route for grabbing a specific Article by id, populate it with it's note
 app.get("/articles/:id", function (req, res) {
