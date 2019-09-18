@@ -98,4 +98,34 @@ $(document).ready(function () {
     $("#bodyinput").val("");
   });
 
+  
+//$("body").off().on('click', '.addnote', function (event) {
+$(document).on("click", ".addnote", function () {
+  var noteID = $(this).attr("data-id");
+  var title = "#ntitle" + noteID;
+  var body = "#nbody" + noteID;
+  var save = "#nsave" + noteID;
+  console.log(`note id ${noteID} title ${title} body ${body}`)
+  $(title).removeClass("d-none");
+  $(body).removeClass("d-none");
+  $(save).removeClass("d-none");
+});
+
+/*
+//make sure they want to delete the selected note.
+$("body").off().on('click', '.deleteButton', function (event) {
+  event.preventDefault();
+
+  //get the database key for the row
+  var noteID = $(this).attr("data-id");
+  $("#submit-delete").attr("noteID", noteID);
+  // Confirm modal to pop up
+  $("#confirmModal").show();
+});*/
+
+//Closes modal on Cancel button click
+$("#modalCloseConfirm").on("click", function () {
+  $("#confirmModal").hide();
+});
+
 });

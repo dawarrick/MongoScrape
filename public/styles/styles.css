@@ -54,6 +54,17 @@ p {
     color: white;
     float:right;
   }
+
+  .deletebtn {
+    color: white;
+    float:right;
+  }
+
+  .notesheader {
+    background-color:rgb(17, 17, 85);
+    color:white;
+    font-size: 1.25em;
+  }
   
   /* Jumbotron 
 .jumbotron {
