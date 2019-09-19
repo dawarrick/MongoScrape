@@ -1,0 +1,1181 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>University of Richmond News Feed</title>
+
+    <!-- JQuery Link -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/flatly/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- DataTables -->
+    <script type="text/javascript" charset="utf8"
+        src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+
+    <!--Font Awesome-->
+    <!--script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <!-- CSS file link -->
+    <link rel="stylesheet" href="styles/styles.css" media="screen" title="no title">
+
+    <!-- JS file link -->
+    <script src="js/app.js"></script>
+
+    <!-- Google Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Catamaran|Staatliches&amp;display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="home">
+        <div class="container">
+
+            <div>
+                <img class="img-responsive mx-auto d-block bignews" src="/images/in-the-news_999x333.jpg">
+            </div>
+
+            <!-- Filter Search -->
+            <!--div class="card">
+      <div class="card-header">Search for Articles</div>
+      <div class="card-body" id="searchBody">
+        <i class="fas fa-search"></i><input class="form-control" id="searchInput" type="text" placeholder="Search...">
+      </div>
+    </div-->
+            <br>
+
+            <!-- Table -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card mb-4">
+                        <div class="card-header"><img class="img-responsive mx-auto d-block spider"
+                                src="/images/spider.png" style="float:left">
+                            University of Richmond Spider's in the News!
+                            <img class="img-responsive mx-auto d-block spider" src="/images/spider.png"
+                                style="float:right">
+
+                        </div>
+                        <div class="card-body">
+                            <div class="row cardrow" id="row" +5d8270f9cb30f3357868ab56=""
+                                data-id="5d8270f9cb30f3357868ab56">
+                                <div class="col-lg-3" id="thumbnail5d8270f9cb30f3357868ab56">
+                                    <!--if no thumbnail image, display the UR shield-->
+                                    <img class="img-fluid mx-auto d-block thumbnail"
+                                        src="https://d1gtq9mqg5x3oe.cloudfront.net/images/_articles/communications/releases/2019/9-september/carrico-healthhub/image-Folders-By-Ratio/thumbnails/healthhub-thumb-200x200.jpg"
+                                        alt="">
+                                </div>
+                                <div class="col-lg-9 title cols" id="titlelink5d8270f9cb30f3357868ab56"><a
+                                        target="_blank"
+                                        href="http://news.richmond.edu/releases/article/-/16638/richmond-laws-carrico-center-partners-with-vcu-health-and-central-virginia-legal-aid-society-to-offer-free-legal-services-at-health-education-and-wellness-center-partnership-is-part-of-larger-initiative-in-east-end-to-create-lasting-and-positive-change.html">Richmond
+                                        Law's Carrico Center Partners with VCU Health and Central Virginia Legal Aid
+                                        Society to Offer Free Legal Services at Health Education and Wellness Center</a>
+
+                                    <div class="col-lg-12 summary cols" id="summary5d8270f9cb30f3357868ab56">
+                                        <p data-id="5d8270f9cb30f3357868ab56">The Richmond School of Law’s Carrico
+                                            Center for Pro Bono &amp; Public Service has launched a new medical legal
+                                            partnership (MLP) with VCU Health and Central Virginia Legal Aid Society
+                                            (CVLAS) to offer free legal services to the community.</p>
+                                    </div>
+                                    <!--trigger the scrape of new articles-->
+                                    <div class="col-lg-12">
+
+                                        <button type="button" class="btn btn-info notesbtn" data-toggle="collapse"
+                                            data-target="#notesection5d8270f9cb30f3357868ab56"
+                                            aria-expanded="false">Simple collapsible</button>
+                                        <!--button type="button" class="btn btn-lg" id="notesbtn" data-toggle="collapse" data-target="#notes-table">Notes</button-->
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="notesection5d8270f9cb30f3357868ab56" class="collapse">
+                            </div>
+                            <table id="article-table" class="table table-hover display">
+                                <tbody>
+
+                                    <!--div class="collapse" id="notes5d8270f9cb30f3357868ab56"-->
+
+                                    <!--let's display the notes-->
+                                </tbody>
+                            </table>
+                            <div class="row" data-id="5d8270f9cb30f3357868ab56">
+                                <div class="col-lg-3"></div>
+                                <div class="col-lg-3 notesheader">Note Title</div>
+                                <div class="col-lg-6 notesheader">Note</div>
+                            </div>
+                            <div class="row noterow">
+                                <div class="col-lg-3"></div>
+                                <div class="col-lg-3 notediv">
+                                    <input type="text" class="d-none notecol" name="title"
+                                        id="ntitle5d8270f9cb30f3357868ab56" placeholder="Title" required="">
+                                </div>
+                                <div class="col-lg-5 notediv" id="body5d8270f9cb30f3357868ab56">
+                                    <textarea type="text" class="d-none notecol" name="body"
+                                        id="nbody5d8270f9cb30f3357868ab56" placeholder="Write Note Here"
+                                        required=""></textarea>
+                                </div>
+                            </div>
+                            <div class="row noterow">
+                                <div class="col-lg-12" style="float:right;">
+                                    <button type="submit" class="btn btn-primary d-none notesave"
+                                        id="nsave5d8270f9cb30f3357868ab56">Save</button>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <button type="button" class="btn btn-sm btn-primary addnote"
+                                    id="addbtn5d8270f9cb30f3357868ab56" data-id="5d8270f9cb30f3357868ab56">Add
+                                    Note</button>
+                            </div>
+                            <table id="notes-table5d8270f9cb30f3357868ab56" class="table table-hover">
+
+                                <tbody>
+                                </tbody>
+                                <!--this is the form to allow for adding a row.  It will be hiddent until add is clicked.-->
+                                <form action="/articles/5d8270f9cb30f3357868ab56" method="post"></form>
+
+
+
+
+                            </table>
+                        </div>
+                        <hr>
+                        <div class="row cardrow" id="row" +5d8270f9cb30f3357868ab58=""
+                            data-id="5d8270f9cb30f3357868ab58">
+                            <div class="col-lg-3" id="thumbnail5d8270f9cb30f3357868ab58">
+                                <!--if no thumbnail image, display the UR shield-->
+                                <img class="img-fluid mx-auto d-block thumbnail"
+                                    src="https://d1gtq9mqg5x3oe.cloudfront.net/images/_articles/communications/releases/2016/November/international-rankings/image-Folders-By-Ratio/thumbnails/international-rankingsthumb-200x200.jpg"
+                                    alt="">
+                            </div>
+                            <div class="col-lg-9 title cols" id="titlelink5d8270f9cb30f3357868ab58"><a target="_blank"
+                                    href="http://news.richmond.edu/releases/article/-/16630/international-scholars-to-converge-in-richmond-to-discuss-future-of-holocaust-commemoration.html">International
+                                    Scholars to Converge in Richmond to Discuss Future of Holocaust Commemoration</a>
+
+                                <div class="col-lg-12 summary cols" id="summary5d8270f9cb30f3357868ab58">
+                                    <p data-id="5d8270f9cb30f3357868ab58">Scholars from around the world will join
+                                        University of Richmond faculty for a conference Sept. 24-27 that aims to explore
+                                        the evolution of Holocaust education and commemoration.</p>
+                                </div>
+                                <!--trigger the scrape of new articles-->
+                                <div class="col-lg-12">
+
+                                    <button type="button" class="btn btn-info notesbtn" data-toggle="collapse"
+                                        data-target="#notesection5d8270f9cb30f3357868ab58" aria-expanded="false">Simple
+                                        collapsible</button>
+                                    <!--button type="button" class="btn btn-lg" id="notesbtn" data-toggle="collapse" data-target="#notes-table">Notes</button-->
+                                </div>
+                            </div>
+                        </div>
+                        <!--div class="collapse" id="notes5d8270f9cb30f3357868ab58"-->
+
+                        <!--let's display the notes-->
+                        <div id="notesection5d8270f9cb30f3357868ab58" class="collapse">
+                            <div class="row" data-id="5d8270f9cb30f3357868ab58">
+                                <div class="col-lg-3"></div>
+                                <div class="col-lg-3 notesheader">Note Title</div>
+                                <div class="col-lg-6 notesheader">Note</div>
+                            </div>
+                            <div class="row noterow">
+                                <div class="col-lg-3"></div>
+                                <div class="col-lg-3 notediv">
+                                    <input type="text" class="d-none notecol" name="title"
+                                        id="ntitle5d8270f9cb30f3357868ab58" placeholder="Title" required="">
+                                </div>
+                                <div class="col-lg-5 notediv" id="body5d8270f9cb30f3357868ab58">
+                                    <textarea type="text" class="d-none notecol" name="body"
+                                        id="nbody5d8270f9cb30f3357868ab58" placeholder="Write Note Here"
+                                        required=""></textarea>
+                                </div>
+                            </div>
+                            <div class="row noterow">
+                                <div class="col-lg-12" style="float:right;">
+                                    <button type="submit" class="btn btn-primary d-none notesave"
+                                        id="nsave5d8270f9cb30f3357868ab58">Save</button>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <button type="button" class="btn btn-sm btn-primary addnote"
+                                    id="addbtn5d8270f9cb30f3357868ab58" data-id="5d8270f9cb30f3357868ab58">Add
+                                    Note</button>
+                            </div>
+                            <table id="notes-table5d8270f9cb30f3357868ab58" class="table table-hover">
+
+                                <tbody>
+                                </tbody>
+                                <!--this is the form to allow for adding a row.  It will be hiddent until add is clicked.-->
+                                <form action="/articles/5d8270f9cb30f3357868ab58" method="post"></form>
+
+
+
+
+                            </table>
+                        </div>
+                        <hr>
+                        <div class="row cardrow" id="row" +5d8150e2c6cf7014c80d7b9b=""
+                            data-id="5d8150e2c6cf7014c80d7b9b">
+                            <div class="col-lg-3" id="thumbnail5d8150e2c6cf7014c80d7b9b">
+                                <!--if no thumbnail image, display the UR shield-->
+                                <img class="img-fluid mx-auto d-block thumbnail"
+                                    src="https://d1gtq9mqg5x3oe.cloudfront.net/images/_articles/communications/releases/2019/9-september/childrens-author/image-Folders-By-Ratio/thumbnails/childrensauthor-thumb-200x200.jpg"
+                                    alt="">
+                            </div>
+                            <div class="col-lg-9 title cols" id="titlelink5d8150e2c6cf7014c80d7b9b"><a target="_blank"
+                                    href="http://news.richmond.edu/releases/article/-/16636/ur-to-host-celebrated-childrens-author-maria-gianferrari.html">UR
+                                    to Host Celebrated Children's Author Maria Gianferrari</a>
+
+                                <div class="col-lg-12 summary cols" id="summary5d8150e2c6cf7014c80d7b9b">
+                                    <p data-id="5d8150e2c6cf7014c80d7b9b">Virginia-based children’s author Maria
+                                        Gianferrari, author of numerous award-winning picture books, will visit
+                                        University of Richmond Oct. 2 for a talk and book signing.</p>
+                                </div>
+                                <!--trigger the scrape of new articles-->
+                                <div class="col-lg-12">
+
+                                    <button type="button" class="btn btn-info notesbtn" data-toggle="collapse"
+                                        data-target="#notesection5d8150e2c6cf7014c80d7b9b" aria-expanded="false">Simple
+                                        collapsible</button>
+                                    <!--button type="button" class="btn btn-lg" id="notesbtn" data-toggle="collapse" data-target="#notes-table">Notes</button-->
+                                </div>
+                            </div>
+                        </div>
+                        <!--div class="collapse" id="notes5d8150e2c6cf7014c80d7b9b"-->
+
+                        <!--let's display the notes-->
+                        <div id="notesection5d8150e2c6cf7014c80d7b9b" class="collapse">
+                            <div class="row" data-id="5d8150e2c6cf7014c80d7b9b">
+                                <div class="col-lg-3"></div>
+                                <div class="col-lg-3 notesheader">Note Title</div>
+                                <div class="col-lg-6 notesheader">Note</div>
+                            </div>
+                            <div class="row noterow" id="nrow" +5d8283d0cb30f3357868ab61=""
+                                data-id="5d8283d0cb30f3357868ab61">
+                                <div class="col-lg-3"></div>
+                                <div class="col-lg-3 notecol" id="title5d8283d0cb30f3357868ab61">
+                                    OK
+                                </div>
+                                <div class="col-lg-5 notecol" id="body5d8283d0cb30f3357868ab61">
+                                    Wrong
+                                </div>
+                                <!--this is the form to allow for deleting a row.-->
+                                <div class="col-lg-1">
+                                    <form action="/deletenote/5d8283d0cb30f3357868ab61" method="post"></form>
+                                    <button type="submit" class="btn btn-danger deletebtn">X</button>
+                                    <!--i class="fa fa-trash"></i> </button-->
+
+                                </div>
+                            </div>
+                            <div class="row noterow">
+                                <div class="col-lg-3"></div>
+                                <div class="col-lg-3 notediv">
+                                    <input type="text" class="d-none notecol" name="title"
+                                        id="ntitle5d8150e2c6cf7014c80d7b9b" placeholder="Title" required="">
+                                </div>
+                                <div class="col-lg-5 notediv" id="body5d8150e2c6cf7014c80d7b9b">
+                                    <textarea type="text" class="d-none notecol" name="body"
+                                        id="nbody5d8150e2c6cf7014c80d7b9b" placeholder="Write Note Here"
+                                        required=""></textarea>
+                                </div>
+                            </div>
+                            <div class="row noterow">
+                                <div class="col-lg-12" style="float:right;">
+                                    <button type="submit" class="btn btn-primary d-none notesave"
+                                        id="nsave5d8150e2c6cf7014c80d7b9b">Save</button>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <button type="button" class="btn btn-sm btn-primary addnote"
+                                    id="addbtn5d8150e2c6cf7014c80d7b9b" data-id="5d8150e2c6cf7014c80d7b9b">Add
+                                    Note</button>
+                            </div>
+                            <table id="notes-table5d8150e2c6cf7014c80d7b9b" class="table table-hover">
+
+                                <tbody>
+                                    <!--header row-->
+
+                                </tbody>
+                                <!--this is the form to allow for adding a row.  It will be hiddent until add is clicked.-->
+                                <form action="/articles/5d8150e2c6cf7014c80d7b9b" method="post"></form>
+
+
+
+
+                            </table>
+                        </div>
+                        <hr>
+                        <div class="row cardrow" id="row" +5d810eb2b899b93a38778592=""
+                            data-id="5d810eb2b899b93a38778592">
+                            <div class="col-lg-3" id="thumbnail5d810eb2b899b93a38778592">
+                                <!--if no thumbnail image, display the UR shield-->
+                                <img class="img-fluid mx-auto d-block thumbnail"
+                                    src="https://d1gtq9mqg5x3oe.cloudfront.net/images/_articles/communications/releases/2019/9-september/nascar/image-Folders-By-Ratio/thumbnails/nascar_sponsorhip_thumbnail-200x200.jpg"
+                                    alt="">
+                            </div>
+                            <div class="col-lg-9 title cols" id="titlelink5d810eb2b899b93a38778592"><a target="_blank"
+                                    href="http://news.richmond.edu/releases/article/-/16578/starcom-racing-nascar-driver-landon-cassill-to-race-university-of-richmond-branded-car-under-the-lights-at-richmond-raceway-pit-stop-thursday-to-provide-sneak-preview-of-design-opportunity-to-meet-cassill-.html">StarCom
+                                    Racing NASCAR Driver Landon Cassill to Race University of Richmond-Branded Car Under
+                                    the Lights at Richmond Raceway</a>
+
+                                <div class="col-lg-12 summary cols" id="summary5d810eb2b899b93a38778592">
+                                    <p data-id="5d810eb2b899b93a38778592">NASCAR returns to Richmond this weekend, and
+                                        this year the University of Richmond will be chasing the checkered flag.</p>
+                                </div>
+                                <!--trigger the scrape of new articles-->
+                                <div class="col-lg-12">
+
+                                    <button type="button" class="btn btn-info notesbtn" data-toggle="collapse"
+                                        data-target="#notesection5d810eb2b899b93a38778592" aria-expanded="false">Simple
+                                        collapsible</button>
+                                    <!--button type="button" class="btn btn-lg" id="notesbtn" data-toggle="collapse" data-target="#notes-table">Notes</button-->
+                                </div>
+                            </div>
+                        </div>
+                        <!--div class="collapse" id="notes5d810eb2b899b93a38778592"-->
+
+                        <!--let's display the notes-->
+                        <div id="notesection5d810eb2b899b93a38778592" class="collapse">
+                            <div class="row" data-id="5d810eb2b899b93a38778592">
+                                <div class="col-lg-3"></div>
+                                <div class="col-lg-3 notesheader">Note Title</div>
+                                <div class="col-lg-6 notesheader">Note</div>
+                            </div>
+                            <div class="row noterow" id="nrow" +5d810ec9b899b93a3877859c=""
+                                data-id="5d810ec9b899b93a3877859c">
+                                <div class="col-lg-3"></div>
+                                <div class="col-lg-3 notecol" id="title5d810ec9b899b93a3877859c">
+                                    Deb's Post
+                                </div>
+                                <div class="col-lg-5 notecol" id="body5d810ec9b899b93a3877859c">
+                                    deb1
+                                </div>
+                                <!--this is the form to allow for deleting a row.-->
+                                <div class="col-lg-1">
+                                    <form action="/deletenote/5d810ec9b899b93a3877859c" method="post"></form>
+                                    <button type="submit" class="btn btn-danger deletebtn">X</button>
+                                    <!--i class="fa fa-trash"></i> </button-->
+
+                                </div>
+                            </div>
+                            <div class="row noterow" id="nrow" +5d817a8a8e061a1d60618b11=""
+                                data-id="5d817a8a8e061a1d60618b11">
+                                <div class="col-lg-3"></div>
+                                <div class="col-lg-3 notecol" id="title5d817a8a8e061a1d60618b11">
+                                    deb is typing
+                                </div>
+                                <div class="col-lg-5 notecol" id="body5d817a8a8e061a1d60618b11">
+                                    This is a longer not, we're going to see how wide it gets
+                                </div>
+                                <!--this is the form to allow for deleting a row.-->
+                                <div class="col-lg-1">
+                                    <form action="/deletenote/5d817a8a8e061a1d60618b11" method="post"></form>
+                                    <button type="submit" class="btn btn-danger deletebtn">X</button>
+                                    <!--i class="fa fa-trash"></i> </button-->
+
+                                </div>
+                            </div>
+                            <div class="row noterow" id="nrow" +5d827886cb30f3357868ab60=""
+                                data-id="5d827886cb30f3357868ab60">
+                                <div class="col-lg-3"></div>
+                                <div class="col-lg-3 notecol" id="title5d827886cb30f3357868ab60">
+                                    Deb
+                                </div>
+                                <div class="col-lg-5 notecol" id="body5d827886cb30f3357868ab60">
+                                    Deb
+                                </div>
+                                <!--this is the form to allow for deleting a row.-->
+                                <div class="col-lg-1">
+                                    <form action="/deletenote/5d827886cb30f3357868ab60" method="post"></form>
+                                    <button type="submit" class="btn btn-danger deletebtn">X</button>
+                                    <!--i class="fa fa-trash"></i> </button-->
+
+                                </div>
+                            </div>
+                            <div class="row noterow">
+                                <div class="col-lg-3"></div>
+                                <div class="col-lg-3 notediv">
+                                    <input type="text" class="d-none notecol" name="title"
+                                        id="ntitle5d810eb2b899b93a38778592" placeholder="Title" required="">
+                                </div>
+                                <div class="col-lg-5 notediv" id="body5d810eb2b899b93a38778592">
+                                    <textarea type="text" class="d-none notecol" name="body"
+                                        id="nbody5d810eb2b899b93a38778592" placeholder="Write Note Here"
+                                        required=""></textarea>
+                                </div>
+                            </div>
+                            <div class="row noterow">
+                                <div class="col-lg-12" style="float:right;">
+                                    <button type="submit" class="btn btn-primary d-none notesave"
+                                        id="nsave5d810eb2b899b93a38778592">Save</button>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <button type="button" class="btn btn-sm btn-primary addnote"
+                                    id="addbtn5d810eb2b899b93a38778592" data-id="5d810eb2b899b93a38778592">Add
+                                    Note</button>
+                            </div>
+                            <table id="notes-table5d810eb2b899b93a38778592" class="table table-hover">
+
+                                <tbody>
+                                    <!--header row-->
+
+                                    <!--header row-->
+
+                                    <!--header row-->
+
+                                </tbody>
+                                <!--this is the form to allow for adding a row.  It will be hiddent until add is clicked.-->
+                                <form action="/articles/5d810eb2b899b93a38778592" method="post"></form>
+
+
+
+
+                            </table>
+                        </div>
+                        <hr>
+                        <div class="row cardrow" id="row" +5d810eb2b899b93a38778593=""
+                            data-id="5d810eb2b899b93a38778593">
+                            <div class="col-lg-3" id="thumbnail5d810eb2b899b93a38778593">
+                                <!--if no thumbnail image, display the UR shield-->
+                                <img class="img-fluid mx-auto d-block thumbnail"
+                                    src="https://d1gtq9mqg5x3oe.cloudfront.net/images/as/as/tucker-boatwright/19-20/thumbnails/tucker-boatwright-thumbnail-200x200.jpg"
+                                    alt="">
+                            </div>
+                            <div class="col-lg-9 title cols" id="titlelink5d810eb2b899b93a38778593"><a target="_blank"
+                                    href="http://news.richmond.edu/releases/article/-/16571/2019-20-ur-festival-of-literature-and-the-arts-features-outdoor-city-performances-amplifying-richmonds-history.html">2019-20
+                                    UR Festival of Literature and the Arts Features Outdoor City Performances Amplifying
+                                    Richmond's History</a>
+
+                                <div class="col-lg-12 summary cols" id="summary5d810eb2b899b93a38778593">
+                                    <p data-id="5d810eb2b899b93a38778593">This year’s Tucker-Boatwright Festival of
+                                        Literature and the Arts will feature outdoor performances developed by artists
+                                        with the city of Richmond and its history specifically in mind.&nbsp;</p>
+                                </div>
+                                <!--trigger the scrape of new articles-->
+                                <div class="col-lg-12">
+
+                                    <button type="button" class="btn btn-info notesbtn" data-toggle="collapse"
+                                        data-target="#notesection5d810eb2b899b93a38778593" aria-expanded="false">Simple
+                                        collapsible</button>
+                                    <!--button type="button" class="btn btn-lg" id="notesbtn" data-toggle="collapse" data-target="#notes-table">Notes</button-->
+                                </div>
+                            </div>
+                        </div>
+                        <!--div class="collapse" id="notes5d810eb2b899b93a38778593"-->
+
+                        <!--let's display the notes-->
+                        <div id="notesection5d810eb2b899b93a38778593" class="collapse">
+                            <div class="row" data-id="5d810eb2b899b93a38778593">
+                                <div class="col-lg-3"></div>
+                                <div class="col-lg-3 notesheader">Note Title</div>
+                                <div class="col-lg-6 notesheader">Note</div>
+                            </div>
+                            <div class="row noterow" id="nrow" +5d813df176dceb52fcd6fe30=""
+                                data-id="5d813df176dceb52fcd6fe30">
+                                <div class="col-lg-3"></div>
+                                <div class="col-lg-3 notecol" id="title5d813df176dceb52fcd6fe30">
+                                    Number 2
+                                </div>
+                                <div class="col-lg-5 notecol" id="body5d813df176dceb52fcd6fe30">
+                                    Second one
+                                </div>
+                                <!--this is the form to allow for deleting a row.-->
+                                <div class="col-lg-1">
+                                    <form action="/deletenote/5d813df176dceb52fcd6fe30" method="post"></form>
+                                    <button type="submit" class="btn btn-danger deletebtn">X</button>
+                                    <!--i class="fa fa-trash"></i> </button-->
+
+                                </div>
+                            </div>
+                            <div class="row noterow">
+                                <div class="col-lg-3"></div>
+                                <div class="col-lg-3 notediv">
+                                    <input type="text" class="d-none notecol" name="title"
+                                        id="ntitle5d810eb2b899b93a38778593" placeholder="Title" required="">
+                                </div>
+                                <div class="col-lg-5 notediv" id="body5d810eb2b899b93a38778593">
+                                    <textarea type="text" class="d-none notecol" name="body"
+                                        id="nbody5d810eb2b899b93a38778593" placeholder="Write Note Here"
+                                        required=""></textarea>
+                                </div>
+                            </div>
+                            <div class="row noterow">
+                                <div class="col-lg-12" style="float:right;">
+                                    <button type="submit" class="btn btn-primary d-none notesave"
+                                        id="nsave5d810eb2b899b93a38778593">Save</button>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <button type="button" class="btn btn-sm btn-primary addnote"
+                                    id="addbtn5d810eb2b899b93a38778593" data-id="5d810eb2b899b93a38778593">Add
+                                    Note</button>
+                            </div>
+                            <table id="notes-table5d810eb2b899b93a38778593" class="table table-hover">
+
+                                <tbody>
+                                    <!--header row-->
+
+                                </tbody>
+                                <!--this is the form to allow for adding a row.  It will be hiddent until add is clicked.-->
+                                <form action="/articles/5d810eb2b899b93a38778593" method="post"></form>
+
+
+
+
+                            </table>
+                        </div>
+                        <hr>
+                        <div class="row cardrow" id="row" +5d810eb2b899b93a38778594=""
+                            data-id="5d810eb2b899b93a38778594">
+                            <div class="col-lg-3" id="thumbnail5d810eb2b899b93a38778594">
+                                <!--if no thumbnail image, display the UR shield-->
+                                <img class="img-fluid mx-auto d-block thumbnail"
+                                    src="https://d1gtq9mqg5x3oe.cloudfront.net/images/_articles/communications/releases/2019/9-september/parish-nsf-grant/image-Folders-By-Ratio/thumbnails/parish-NSF-thumb-200x200.jpg"
+                                    alt="">
+                            </div>
+                            <div class="col-lg-9 title cols" id="titlelink5d810eb2b899b93a38778594"><a target="_blank"
+                                    href="http://news.richmond.edu/releases/article/-/16572/university-of-richmond-professor-carol-parish-awarded-nsf-grant-to-use-design-thinking-to-develop-open-access-digital-portal-for-molecular-sciences-researchers-from-ur-virginia-commonwealth-university-and-university-of-florida-will-work-together-on-the-nearly-1-million-project-to-create-the-alexa-of-chemistry-.html">University
+                                    of Richmond Professor Carol Parish Awarded NSF Grant to Use Design Thinking to
+                                    Develop Open-Access Digital Portal for Molecular Sciences</a>
+
+                                <div class="col-lg-12 summary cols" id="summary5d810eb2b899b93a38778594">
+                                    <p data-id="5d810eb2b899b93a38778594">Chemistry professor Carol Parish is partnering
+                                        with colleagues at Virginia Commonwealth University and the University of
+                                        Florida for a nearly $1 million National Science Foundation-funded project using
+                                        machine learning, design thinking, and data analytics to develop a central
+                                        portal for the molecular sciences.</p>
+                                </div>
+                                <!--trigger the scrape of new articles-->
+                                <div class="col-lg-12">
+
+                                    <button type="button" class="btn btn-info notesbtn" data-toggle="collapse"
+                                        data-target="#notesection5d810eb2b899b93a38778594" aria-expanded="false">Simple
+                                        collapsible</button>
+                                    <!--button type="button" class="btn btn-lg" id="notesbtn" data-toggle="collapse" data-target="#notes-table">Notes</button-->
+                                </div>
+                            </div>
+                        </div>
+                        <!--div class="collapse" id="notes5d810eb2b899b93a38778594"-->
+
+                        <!--let's display the notes-->
+                        <div id="notesection5d810eb2b899b93a38778594" class="collapse">
+                            <div class="row" data-id="5d810eb2b899b93a38778594">
+                                <div class="col-lg-3"></div>
+                                <div class="col-lg-3 notesheader">Note Title</div>
+                                <div class="col-lg-6 notesheader">Note</div>
+                            </div>
+                            <div class="row noterow" id="nrow" +5d813dfc76dceb52fcd6fe31=""
+                                data-id="5d813dfc76dceb52fcd6fe31">
+                                <div class="col-lg-3"></div>
+                                <div class="col-lg-3 notecol" id="title5d813dfc76dceb52fcd6fe31">
+                                    third entry
+                                </div>
+                                <div class="col-lg-5 notecol" id="body5d813dfc76dceb52fcd6fe31">
+                                    333
+                                </div>
+                                <!--this is the form to allow for deleting a row.-->
+                                <div class="col-lg-1">
+                                    <form action="/deletenote/5d813dfc76dceb52fcd6fe31" method="post"></form>
+                                    <button type="submit" class="btn btn-danger deletebtn">X</button>
+                                    <!--i class="fa fa-trash"></i> </button-->
+
+                                </div>
+                            </div>
+                            <div class="row noterow">
+                                <div class="col-lg-3"></div>
+                                <div class="col-lg-3 notediv">
+                                    <input type="text" class="d-none notecol" name="title"
+                                        id="ntitle5d810eb2b899b93a38778594" placeholder="Title" required="">
+                                </div>
+                                <div class="col-lg-5 notediv" id="body5d810eb2b899b93a38778594">
+                                    <textarea type="text" class="d-none notecol" name="body"
+                                        id="nbody5d810eb2b899b93a38778594" placeholder="Write Note Here"
+                                        required=""></textarea>
+                                </div>
+                            </div>
+                            <div class="row noterow">
+                                <div class="col-lg-12" style="float:right;">
+                                    <button type="submit" class="btn btn-primary d-none notesave"
+                                        id="nsave5d810eb2b899b93a38778594">Save</button>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <button type="button" class="btn btn-sm btn-primary addnote"
+                                    id="addbtn5d810eb2b899b93a38778594" data-id="5d810eb2b899b93a38778594">Add
+                                    Note</button>
+                            </div>
+                            <table id="notes-table5d810eb2b899b93a38778594" class="table table-hover">
+
+                                <tbody>
+                                    <!--header row-->
+
+                                </tbody>
+                                <!--this is the form to allow for adding a row.  It will be hiddent until add is clicked.-->
+                                <form action="/articles/5d810eb2b899b93a38778594" method="post"></form>
+
+
+
+
+                            </table>
+                        </div>
+                        <hr>
+                        <div class="row cardrow" id="row" +5d810eb2b899b93a38778595=""
+                            data-id="5d810eb2b899b93a38778595">
+                            <div class="col-lg-3" id="thumbnail5d810eb2b899b93a38778595">
+                                <!--if no thumbnail image, display the UR shield-->
+                                <img class="img-fluid mx-auto d-block thumbnail"
+                                    src="https://d1gtq9mqg5x3oe.cloudfront.net/images/will/speaker-series/thumbnails/speaker-series-thumbnail-200x200.jpg"
+                                    alt="">
+                            </div>
+                            <div class="col-lg-9 title cols" id="titlelink5d810eb2b899b93a38778595"><a target="_blank"
+                                    href="http://news.richmond.edu/releases/article/-/16563/urs-will-program-celebrates-40th-anniversary-with-speaker-series-featuring-celebrated-authors-poets-and-educators.html">UR's
+                                    WILL* Program Celebrates 40th Anniversary with Speaker Series Featuring Celebrated
+                                    Authors, Poets, and Educators</a>
+
+                                <div class="col-lg-12 summary cols" id="summary5d810eb2b899b93a38778595">
+                                    <p data-id="5d810eb2b899b93a38778595">The University of Richmond’s WILL* Program and
+                                        the Women, Gender, and Sexuality Studies program are hosting a variety of
+                                        renowned authors, poets, and educators for the annual WILL*/WGSS speaker series,
+                                        which honors WILL*’s 40th anniversary this year.</p>
+                                </div>
+                                <!--trigger the scrape of new articles-->
+                                <div class="col-lg-12">
+
+                                    <button type="button" class="btn btn-info notesbtn" data-toggle="collapse"
+                                        data-target="#notesection5d810eb2b899b93a38778595" aria-expanded="false">Simple
+                                        collapsible</button>
+                                    <!--button type="button" class="btn btn-lg" id="notesbtn" data-toggle="collapse" data-target="#notes-table">Notes</button-->
+                                </div>
+                            </div>
+                        </div>
+                        <!--div class="collapse" id="notes5d810eb2b899b93a38778595"-->
+
+                        <!--let's display the notes-->
+                        <div id="notesection5d810eb2b899b93a38778595" class="collapse">
+                            <div class="row" data-id="5d810eb2b899b93a38778595">
+                                <div class="col-lg-3"></div>
+                                <div class="col-lg-3 notesheader">Note Title</div>
+                                <div class="col-lg-6 notesheader">Note</div>
+                            </div>
+                            <div class="row noterow">
+                                <div class="col-lg-3"></div>
+                                <div class="col-lg-3 notediv">
+                                    <input type="text" class="d-none notecol" name="title"
+                                        id="ntitle5d810eb2b899b93a38778595" placeholder="Title" required="">
+                                </div>
+                                <div class="col-lg-5 notediv" id="body5d810eb2b899b93a38778595">
+                                    <textarea type="text" class="d-none notecol" name="body"
+                                        id="nbody5d810eb2b899b93a38778595" placeholder="Write Note Here"
+                                        required=""></textarea>
+                                </div>
+                            </div>
+                            <div class="row noterow">
+                                <div class="col-lg-12" style="float:right;">
+                                    <button type="submit" class="btn btn-primary d-none notesave"
+                                        id="nsave5d810eb2b899b93a38778595">Save</button>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <button type="button" class="btn btn-sm btn-primary addnote"
+                                    id="addbtn5d810eb2b899b93a38778595" data-id="5d810eb2b899b93a38778595">Add
+                                    Note</button>
+                            </div>
+                            <table id="notes-table5d810eb2b899b93a38778595" class="table table-hover">
+
+                                <tbody>
+                                </tbody>
+                                <!--this is the form to allow for adding a row.  It will be hiddent until add is clicked.-->
+                                <form action="/articles/5d810eb2b899b93a38778595" method="post"></form>
+
+
+
+
+                            </table>
+                        </div>
+                        <hr>
+                        <div class="row cardrow" id="row" +5d810eb2b899b93a38778596=""
+                            data-id="5d810eb2b899b93a38778596">
+                            <div class="col-lg-3" id="thumbnail5d810eb2b899b93a38778596">
+                                <!--if no thumbnail image, display the UR shield-->
+                                <img class="img-fluid mx-auto d-block thumbnail"
+                                    src="https://d1gtq9mqg5x3oe.cloudfront.net/images/_articles/communications/releases/2019/9-september/weinstein-rosenthal/thumbnails/W-R_19_thumb-200x200.jpg"
+                                    alt="">
+                            </div>
+                            <div class="col-lg-9 title cols" id="titlelink5d810eb2b899b93a38778596"><a target="_blank"
+                                    href="http://news.richmond.edu/releases/article/-/16559/urs-weinstein-rosenthal-forum-features-best-selling-author-andrew-soloman.html">UR's
+                                    Weinstein-Rosenthal Forum Features Best-Selling Author Andrew Soloman</a>
+
+                                <div class="col-lg-12 summary cols" id="summary5d810eb2b899b93a38778596">
+                                    <p data-id="5d810eb2b899b93a38778596">The University of Richmond annual
+                                        Weinstein-Rosenthal Forum on Faith, Ethics and Global Society will feature
+                                        keynote speaker Andrew Solomon to discuss radical compassion.</p>
+                                </div>
+                                <!--trigger the scrape of new articles-->
+                                <div class="col-lg-12">
+
+                                    <button type="button" class="btn btn-info notesbtn" data-toggle="collapse"
+                                        data-target="#notesection5d810eb2b899b93a38778596" aria-expanded="false">Simple
+                                        collapsible</button>
+                                    <!--button type="button" class="btn btn-lg" id="notesbtn" data-toggle="collapse" data-target="#notes-table">Notes</button-->
+                                </div>
+                            </div>
+                        </div>
+                        <!--div class="collapse" id="notes5d810eb2b899b93a38778596"-->
+
+                        <!--let's display the notes-->
+                        <div id="notesection5d810eb2b899b93a38778596" class="collapse">
+                            <div class="row" data-id="5d810eb2b899b93a38778596">
+                                <div class="col-lg-3"></div>
+                                <div class="col-lg-3 notesheader">Note Title</div>
+                                <div class="col-lg-6 notesheader">Note</div>
+                            </div>
+                            <div class="row noterow">
+                                <div class="col-lg-3"></div>
+                                <div class="col-lg-3 notediv">
+                                    <input type="text" class="d-none notecol" name="title"
+                                        id="ntitle5d810eb2b899b93a38778596" placeholder="Title" required="">
+                                </div>
+                                <div class="col-lg-5 notediv" id="body5d810eb2b899b93a38778596">
+                                    <textarea type="text" class="d-none notecol" name="body"
+                                        id="nbody5d810eb2b899b93a38778596" placeholder="Write Note Here"
+                                        required=""></textarea>
+                                </div>
+                            </div>
+                            <div class="row noterow">
+                                <div class="col-lg-12" style="float:right;">
+                                    <button type="submit" class="btn btn-primary d-none notesave"
+                                        id="nsave5d810eb2b899b93a38778596">Save</button>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <button type="button" class="btn btn-sm btn-primary addnote"
+                                    id="addbtn5d810eb2b899b93a38778596" data-id="5d810eb2b899b93a38778596">Add
+                                    Note</button>
+                            </div>
+                            <table id="notes-table5d810eb2b899b93a38778596" class="table table-hover">
+
+                                <tbody>
+                                </tbody>
+                                <!--this is the form to allow for adding a row.  It will be hiddent until add is clicked.-->
+                                <form action="/articles/5d810eb2b899b93a38778596" method="post"></form>
+
+
+
+
+                            </table>
+                        </div>
+                        <hr>
+                        <div class="row cardrow" id="row" +5d810eb2b899b93a38778597=""
+                            data-id="5d810eb2b899b93a38778597">
+                            <div class="col-lg-3" id="thumbnail5d810eb2b899b93a38778597">
+                                <!--if no thumbnail image, display the UR shield-->
+                                <img class="img-fluid mx-auto d-block thumbnail"
+                                    src="https://d1gtq9mqg5x3oe.cloudfront.net/images/_articles/communications/releases/2019/9-september/us-news/image-Folders-By-Ratio/thumbnails/usnews-thumb-200x200.jpg"
+                                    alt="">
+                            </div>
+                            <div class="col-lg-9 title cols" id="titlelink5d810eb2b899b93a38778597"><a target="_blank"
+                                    href="http://news.richmond.edu/releases/article/-/16558/u.s.-news-ranks-ur-23rd-for-national-liberal-arts-colleges-highlighted-in-top-20-for-innovation-and-learning-communities.html">U.S.
+                                    News Ranks UR 23rd for National Liberal Arts Colleges; Highlighted in Top 20 for
+                                    Innovation and Learning Communities</a>
+
+                                <div class="col-lg-12 summary cols" id="summary5d810eb2b899b93a38778597">
+                                    <p data-id="5d810eb2b899b93a38778597">U.S. News &amp; World Report’s Best Colleges
+                                        2020 guide ranked the University of Richmond #23 overall and #24 for “Best
+                                        Value” among national liberal arts colleges.</p>
+                                </div>
+                                <!--trigger the scrape of new articles-->
+                                <div class="col-lg-12">
+
+                                    <button type="button" class="btn btn-info notesbtn" data-toggle="collapse"
+                                        data-target="#notesection5d810eb2b899b93a38778597" aria-expanded="false">Simple
+                                        collapsible</button>
+                                    <!--button type="button" class="btn btn-lg" id="notesbtn" data-toggle="collapse" data-target="#notes-table">Notes</button-->
+                                </div>
+                            </div>
+                        </div>
+                        <!--div class="collapse" id="notes5d810eb2b899b93a38778597"-->
+
+                        <!--let's display the notes-->
+                        <div id="notesection5d810eb2b899b93a38778597" class="collapse">
+                            <div class="row" data-id="5d810eb2b899b93a38778597">
+                                <div class="col-lg-3"></div>
+                                <div class="col-lg-3 notesheader">Note Title</div>
+                                <div class="col-lg-6 notesheader">Note</div>
+                            </div>
+                            <div class="row noterow">
+                                <div class="col-lg-3"></div>
+                                <div class="col-lg-3 notediv">
+                                    <input type="text" class="d-none notecol" name="title"
+                                        id="ntitle5d810eb2b899b93a38778597" placeholder="Title" required="">
+                                </div>
+                                <div class="col-lg-5 notediv" id="body5d810eb2b899b93a38778597">
+                                    <textarea type="text" class="d-none notecol" name="body"
+                                        id="nbody5d810eb2b899b93a38778597" placeholder="Write Note Here"
+                                        required=""></textarea>
+                                </div>
+                            </div>
+                            <div class="row noterow">
+                                <div class="col-lg-12" style="float:right;">
+                                    <button type="submit" class="btn btn-primary d-none notesave"
+                                        id="nsave5d810eb2b899b93a38778597">Save</button>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <button type="button" class="btn btn-sm btn-primary addnote"
+                                    id="addbtn5d810eb2b899b93a38778597" data-id="5d810eb2b899b93a38778597">Add
+                                    Note</button>
+                            </div>
+                            <table id="notes-table5d810eb2b899b93a38778597" class="table table-hover">
+
+                                <tbody>
+                                </tbody>
+                                <!--this is the form to allow for adding a row.  It will be hiddent until add is clicked.-->
+                                <form action="/articles/5d810eb2b899b93a38778597" method="post"></form>
+
+
+
+
+                            </table>
+                        </div>
+                        <hr>
+                        <div class="row cardrow" id="row" +5d810eb2b899b93a38778598=""
+                            data-id="5d810eb2b899b93a38778598">
+                            <div class="col-lg-3" id="thumbnail5d810eb2b899b93a38778598">
+                                <!--if no thumbnail image, display the UR shield-->
+                                <img class="img-fluid mx-auto d-block urshield" src="/images/shieldSmall.png" alt="">
+                            </div>
+                            <div class="col-lg-9 title cols" id="titlelink5d810eb2b899b93a38778598"><a target="_blank"
+                                    href="http://news.richmond.edu/releases/article/-/16553/c-suite-conversations-to-feature-speakers-from-bon-secours-allianz-newport-news-shipbuilding--.html">C-Suite
+                                    Conversations To Feature Speakers From Bon Secours, Allianz, Newport News
+                                    Shipbuilding </a>
+
+                                <div class="col-lg-12 summary cols" id="summary5d810eb2b899b93a38778598">
+                                    <p data-id="5d810eb2b899b93a38778598">The University of Richmond's Robins School of
+                                        Business has announced the lineup of C-Suite Conversations.</p>
+                                </div>
+                                <!--trigger the scrape of new articles-->
+                                <div class="col-lg-12">
+
+                                    <button type="button" class="btn btn-info notesbtn" data-toggle="collapse"
+                                        data-target="#notesection5d810eb2b899b93a38778598" aria-expanded="false">Simple
+                                        collapsible</button>
+                                    <!--button type="button" class="btn btn-lg" id="notesbtn" data-toggle="collapse" data-target="#notes-table">Notes</button-->
+                                </div>
+                            </div>
+                        </div>
+                        <!--div class="collapse" id="notes5d810eb2b899b93a38778598"-->
+
+                        <!--let's display the notes-->
+                        <div id="notesection5d810eb2b899b93a38778598" class="collapse">
+                            <div class="row" data-id="5d810eb2b899b93a38778598">
+                                <div class="col-lg-3"></div>
+                                <div class="col-lg-3 notesheader">Note Title</div>
+                                <div class="col-lg-6 notesheader">Note</div>
+                            </div>
+                            <div class="row noterow">
+                                <div class="col-lg-3"></div>
+                                <div class="col-lg-3 notediv">
+                                    <input type="text" class="d-none notecol" name="title"
+                                        id="ntitle5d810eb2b899b93a38778598" placeholder="Title" required="">
+                                </div>
+                                <div class="col-lg-5 notediv" id="body5d810eb2b899b93a38778598">
+                                    <textarea type="text" class="d-none notecol" name="body"
+                                        id="nbody5d810eb2b899b93a38778598" placeholder="Write Note Here"
+                                        required=""></textarea>
+                                </div>
+                            </div>
+                            <div class="row noterow">
+                                <div class="col-lg-12" style="float:right;">
+                                    <button type="submit" class="btn btn-primary d-none notesave"
+                                        id="nsave5d810eb2b899b93a38778598">Save</button>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <button type="button" class="btn btn-sm btn-primary addnote"
+                                    id="addbtn5d810eb2b899b93a38778598" data-id="5d810eb2b899b93a38778598">Add
+                                    Note</button>
+                            </div>
+                            <table id="notes-table5d810eb2b899b93a38778598" class="table table-hover">
+
+                                <tbody>
+                                </tbody>
+                                <!--this is the form to allow for adding a row.  It will be hiddent until add is clicked.-->
+                                <form action="/articles/5d810eb2b899b93a38778598" method="post"></form>
+
+
+
+
+                            </table>
+                        </div>
+                        <hr>
+                        <div class="row cardrow" id="row" +5d810eb2b899b93a38778599=""
+                            data-id="5d810eb2b899b93a38778599">
+                            <div class="col-lg-3" id="thumbnail5d810eb2b899b93a38778599">
+                                <!--if no thumbnail image, display the UR shield-->
+                                <img class="img-fluid mx-auto d-block thumbnail"
+                                    src="https://d1gtq9mqg5x3oe.cloudfront.net/images/www/sharp/2019/series/thumbnails/sharp-series-thumbnail-200x200.jpg"
+                                    alt="">
+                            </div>
+                            <div class="col-lg-9 title cols" id="titlelink5d810eb2b899b93a38778599"><a target="_blank"
+                                    href="http://news.richmond.edu/releases/article/-/16551/sharp-viewpoint-speakers-series-announced-thought-leaders-to-discuss-critical-aspects-of-identity-development.html">Sharp
+                                    Viewpoint Speakers Series Announced</a>
+
+                                <div class="col-lg-12 summary cols" id="summary5d810eb2b899b93a38778599">
+                                    <p data-id="5d810eb2b899b93a38778599">The University of Richmond fosters important
+                                        and challenging dialogues through the Sharp Viewpoint Speaker Series.</p>
+                                </div>
+                                <!--trigger the scrape of new articles-->
+                                <div class="col-lg-12">
+
+                                    <button type="button" class="btn btn-info notesbtn" data-toggle="collapse"
+                                        data-target="#notesection5d810eb2b899b93a38778599" aria-expanded="false">Simple
+                                        collapsible</button>
+                                    <!--button type="button" class="btn btn-lg" id="notesbtn" data-toggle="collapse" data-target="#notes-table">Notes</button-->
+                                </div>
+                            </div>
+                        </div>
+                        <!--div class="collapse" id="notes5d810eb2b899b93a38778599"-->
+
+                        <!--let's display the notes-->
+                        <div id="notesection5d810eb2b899b93a38778599" class="collapse">
+                            <div class="row" data-id="5d810eb2b899b93a38778599">
+                                <div class="col-lg-3"></div>
+                                <div class="col-lg-3 notesheader">Note Title</div>
+                                <div class="col-lg-6 notesheader">Note</div>
+                            </div>
+                            <div class="row noterow">
+                                <div class="col-lg-3"></div>
+                                <div class="col-lg-3 notediv">
+                                    <input type="text" class="d-none notecol" name="title"
+                                        id="ntitle5d810eb2b899b93a38778599" placeholder="Title" required="">
+                                </div>
+                                <div class="col-lg-5 notediv" id="body5d810eb2b899b93a38778599">
+                                    <textarea type="text" class="d-none notecol" name="body"
+                                        id="nbody5d810eb2b899b93a38778599" placeholder="Write Note Here"
+                                        required=""></textarea>
+                                </div>
+                            </div>
+                            <div class="row noterow">
+                                <div class="col-lg-12" style="float:right;">
+                                    <button type="submit" class="btn btn-primary d-none notesave"
+                                        id="nsave5d810eb2b899b93a38778599">Save</button>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <button type="button" class="btn btn-sm btn-primary addnote"
+                                    id="addbtn5d810eb2b899b93a38778599" data-id="5d810eb2b899b93a38778599">Add
+                                    Note</button>
+                            </div>
+                            <table id="notes-table5d810eb2b899b93a38778599" class="table table-hover">
+
+                                <tbody>
+                                </tbody>
+                                <!--this is the form to allow for adding a row.  It will be hiddent until add is clicked.-->
+                                <form action="/articles/5d810eb2b899b93a38778599" method="post"></form>
+
+
+
+
+                            </table>
+                        </div>
+                        <hr>
+                        <div class="row cardrow" id="row" +5d810eb2b899b93a3877859a=""
+                            data-id="5d810eb2b899b93a3877859a">
+                            <div class="col-lg-3" id="thumbnail5d810eb2b899b93a3877859a">
+                                <!--if no thumbnail image, display the UR shield-->
+                                <img class="img-fluid mx-auto d-block urshield" src="/images/shieldSmall.png" alt="">
+                            </div>
+                            <div class="col-lg-9 title cols" id="titlelink5d810eb2b899b93a3877859a"><a target="_blank"
+                                    href="http://news.richmond.edu/releases/article/-/16552/new-exhibition-at-ur-downtown-exposes-misconceptions-about-homelessness.html">New
+                                    Exhibition at UR Downtown Exposes Misconceptions about Homelessness</a>
+
+                                <div class="col-lg-12 summary cols" id="summary5d810eb2b899b93a3877859a">
+                                    <p data-id="5d810eb2b899b93a3877859a">A new exhibition organized by Daily Planet
+                                        Health Services will open at the University of Richmond Downtown on Friday,
+                                        Sept. 6 in honor of the Richmond organization’s 50th anniversary celebration in
+                                        2019.</p>
+                                </div>
+                                <!--trigger the scrape of new articles-->
+                                <div class="col-lg-12">
+
+                                    <button type="button" class="btn btn-info notesbtn" data-toggle="collapse"
+                                        data-target="#notesection5d810eb2b899b93a3877859a" aria-expanded="false">Simple
+                                        collapsible</button>
+                                    <!--button type="button" class="btn btn-lg" id="notesbtn" data-toggle="collapse" data-target="#notes-table">Notes</button-->
+                                </div>
+                            </div>
+                        </div>
+                        <!--div class="collapse" id="notes5d810eb2b899b93a3877859a"-->
+
+                        <!--let's display the notes-->
+                        <div id="notesection5d810eb2b899b93a3877859a" class="collapse">
+                            <div class="row" data-id="5d810eb2b899b93a3877859a">
+                                <div class="col-lg-3"></div>
+                                <div class="col-lg-3 notesheader">Note Title</div>
+                                <div class="col-lg-6 notesheader">Note</div>
+                            </div>
+                            <div class="row noterow">
+                                <div class="col-lg-3"></div>
+                                <div class="col-lg-3 notediv">
+                                    <input type="text" class="d-none notecol" name="title"
+                                        id="ntitle5d810eb2b899b93a3877859a" placeholder="Title" required="">
+                                </div>
+                                <div class="col-lg-5 notediv" id="body5d810eb2b899b93a3877859a">
+                                    <textarea type="text" class="d-none notecol" name="body"
+                                        id="nbody5d810eb2b899b93a3877859a" placeholder="Write Note Here"
+                                        required=""></textarea>
+                                </div>
+                            </div>
+                            <div class="row noterow">
+                                <div class="col-lg-12" style="float:right;">
+                                    <button type="submit" class="btn btn-primary d-none notesave"
+                                        id="nsave5d810eb2b899b93a3877859a">Save</button>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <button type="button" class="btn btn-sm btn-primary addnote"
+                                    id="addbtn5d810eb2b899b93a3877859a" data-id="5d810eb2b899b93a3877859a">Add
+                                    Note</button>
+                            </div>
+                            <table id="notes-table5d810eb2b899b93a3877859a" class="table table-hover">
+
+                                <tbody>
+                                </tbody>
+                                <!--this is the form to allow for adding a row.  It will be hiddent until add is clicked.-->
+                                <form action="/articles/5d810eb2b899b93a3877859a" method="post"></form>
+
+
+
+
+                            </table>
+                        </div>
+                        <hr>
+                        <div class="row cardrow" id="row" +5d810eb2b899b93a3877859b=""
+                            data-id="5d810eb2b899b93a3877859b">
+                            <div class="col-lg-3" id="thumbnail5d810eb2b899b93a3877859b">
+                                <!--if no thumbnail image, display the UR shield-->
+                                <img class="img-fluid mx-auto d-block urshield" src="/images/shieldSmall.png" alt="">
+                            </div>
+                            <div class="col-lg-9 title cols" id="titlelink5d810eb2b899b93a3877859b"><a target="_blank"
+                                    href="http://news.richmond.edu/releases/article/-/16550/renowned-expert-on-mass-incarceration-to-speak-at-law-school.html">Renowned
+                                    Expert on Mass Incarceration to Speak at Law School</a>
+
+                                <div class="col-lg-12 summary cols" id="summary5d810eb2b899b93a3877859b">
+                                    <p data-id="5d810eb2b899b93a3877859b">The University of Richmond School of Law will
+                                        welcome James Forman Jr., a professor at Yale Law, for “Confronting Mass
+                                        Incarceration,” Sept. 12 from 4-5:30 p.m. in the law school’s Moot Courtroom.
+                                    </p>
+                                </div>
+                                <!--trigger the scrape of new articles-->
+                                <div class="col-lg-12">
+
+                                    <button type="button" class="btn btn-info notesbtn" data-toggle="collapse"
+                                        data-target="#notesection5d810eb2b899b93a3877859b" aria-expanded="false">Simple
+                                        collapsible</button>
+                                    <!--button type="button" class="btn btn-lg" id="notesbtn" data-toggle="collapse" data-target="#notes-table">Notes</button-->
+                                </div>
+                            </div>
+                        </div>
+                        <!--div class="collapse" id="notes5d810eb2b899b93a3877859b"-->
+
+                        <!--let's display the notes-->
+                        <div id="notesection5d810eb2b899b93a3877859b" class="collapse">
+                            <div class="row" data-id="5d810eb2b899b93a3877859b">
+                                <div class="col-lg-3"></div>
+                                <div class="col-lg-3 notesheader">Note Title</div>
+                                <div class="col-lg-6 notesheader">Note</div>
+                            </div>
+                            <div class="row noterow">
+                                <div class="col-lg-3"></div>
+                                <div class="col-lg-3 notediv">
+                                    <input type="text" class="d-none notecol" name="title"
+                                        id="ntitle5d810eb2b899b93a3877859b" placeholder="Title" required="">
+                                </div>
+                                <div class="col-lg-5 notediv" id="body5d810eb2b899b93a3877859b">
+                                    <textarea type="text" class="d-none notecol" name="body"
+                                        id="nbody5d810eb2b899b93a3877859b" placeholder="Write Note Here"
+                                        required=""></textarea>
+                                </div>
+                            </div>
+                            <div class="row noterow">
+                                <div class="col-lg-12" style="float:right;">
+                                    <button type="submit" class="btn btn-primary d-none notesave"
+                                        id="nsave5d810eb2b899b93a3877859b">Save</button>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <button type="button" class="btn btn-sm btn-primary addnote"
+                                    id="addbtn5d810eb2b899b93a3877859b" data-id="5d810eb2b899b93a3877859b">Add
+                                    Note</button>
+                            </div>
+                            <table id="notes-table5d810eb2b899b93a3877859b" class="table table-hover">
+
+                                <tbody>
+                                </tbody>
+                                <!--this is the form to allow for adding a row.  It will be hiddent until add is clicked.-->
+                                <form action="/articles/5d810eb2b899b93a3877859b" method="post"></form>
+
+
+
+
+                            </table>
+                        </div>
+                        <hr>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>MongoScraping the UR news site ((https://news.richmond.edu/releases/index.html)</footer>
+    </div>
+
+
+    <!-- MODALS -->
+
+    <form action="/articles/" method="post"></form>
+
+    <!-- Confirm Delete Modal -->
+    <div class="modal" id="confirmModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Delete entry</h5>
+                </div>
+                <div class="modal-body">
+                    <form action="/deletenote/" method="post">
+                        <p>
+                        </p>
+                        <h5>Are you sure you want to delete?</h5>
+                        <p></p>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                                id="modalCloseConfirm">Cancel</button>
+                            <button type="submit" class="btn btn-primary" id="submit-delete">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script-->
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <!--script src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script-->
+    <script src="/js/app.js"></script>
+
+
+</body>
+
+</html>

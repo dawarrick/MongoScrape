@@ -102,13 +102,11 @@ $(document).ready(function () {
 //$("body").off().on('click', '.addnote', function (event) {
 $(document).on("click", ".addnote", function () {
   var noteID = $(this).attr("data-id");
-  var title = "#ntitle" + noteID;
-  var body = "#nbody" + noteID;
-  var save = "#nsave" + noteID;
-  console.log(`note id ${noteID} title ${title} body ${body}`)
-  $(title).removeClass("d-none");
-  $(body).removeClass("d-none");
-  $(save).removeClass("d-none");
+  //console.log(`note id ${noteID} title ${title} body ${body}`)
+  $("#ntitle" + noteID).removeClass("d-none");
+  $("#nbody" + noteID).removeClass("d-none");
+  $("#nsave" + noteID).removeClass("d-none");
+  $("#addbtn"+ noteID).addClass("d-none");
 });
 
 /*

@@ -1,202 +1,165 @@
 <div id="home">
-  <div class="container">
+    <div class="container">
 
-    <!-- Jumbotron -->
-    <div>
-      <img class="img-responsive mx-auto d-block bignews" src="/images/in-the-news_999x333.jpg">
-      <!--h5 class="text-center display-1" id="jumboTitle">University of Richmond Newsroom</h5-->
-      <!--h5 class="text-center" id="jumboSubtitle"><em>Automobile Management System</em></h5-->
-    </div>
+        <div>
+            <img class="img-responsive mx-auto d-block bignews" src="/images/in-the-news_999x333.jpg">
+        </div>
 
-    <!-- Filter Search -->
-    <!--div class="card">
+        <!-- Filter Search -->
+        <!--div class="card">
       <div class="card-header">Search for Articles</div>
       <div class="card-body" id="searchBody">
         <i class="fas fa-search"></i><input class="form-control" id="searchInput" type="text" placeholder="Search...">
       </div>
     </div-->
-    <br>
+        <br>
 
-    <!-- Table -->
-    <div class="row">
-      <div class="col-md-12">
-        <div class="card mb-4">
-          <div class="card-header"><img class="img-responsive mx-auto d-block spider" src="/images/spider.png">
-            <div>University of Richmond Spider's in the News</div>
-          </div>
-          <div class="card-body">
-            <table id="article-table" class="table table-hover display">
-              <tbody>
-                {{#each articles as |article articleId|}}
-                <div class="row" id="row" +{{this.id}} data-id="{{this.id}}">
-                  <div class="col-lg-3" id="thumbnail{{this.id}}">
-                    <!--if no thumbnail image, display the UR shield-->
-                    {{#if thumbnail}}
-                    <img class="img-fluid mx-auto d-block thumbnail" src={{this.thumbnail}} alt="">
-                    {{else}}
-                    <img class="img-fluid mx-auto d-block urshield" src="/images/shieldSmall.png" alt="">
-                    {{/if}}
-                  </div>
-                  <div class="col-lg-9 title cols" id="titlelink{{this.id}}"><a target="_blank"
-                      href={{this.link}}>{{this.title}}</a>
-
-                    <div class="col-lg-12 summary cols" id="summary{{this.id}}">
-                      <p data-id="{{this.id}}">{{this.summary}}</p>
+        <!-- Table -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card mb-4">
+                    <div class="card-header"><img class="img-responsive mx-auto d-block spider" src="/images/spider.png"
+                            style="float:left">
+                        University of Richmond Spider's in the News!
+                        <img class="img-responsive mx-auto d-block spider" src="/images/spider.png" style="float:right">
                     </div>
-                    <!--trigger the scrape of new articles-->
-                    <div class="col-lg-12">
-                      <button type="button" class="btn btn-lg" id="notesbtn" data-toggle="collapse">Notes</button>
-                    </div>
-                  </div>
                 </div>
-                <!--div class="collapse" id="notes{{this.id}}"-->
+                <div class="card-body">
+                    <table id="article-table" class="table table-hover display">
+                        <tbody>
+                            {{#each articles as |article articleId|}}
+                            <div class="row cardrow" id="row" +{{this.id}} data-id="{{this.id}}">
+                                <div class="col-lg-3" id="thumbnail{{this.id}}">
+                                    <!--if no thumbnail image, display the UR shield-->
+                                    {{#if thumbnail}}
+                                    <img class="img-fluid mx-auto d-block thumbnail" src={{this.thumbnail}} alt="">
+                                    {{else}}
+                                    <img class="img-fluid mx-auto d-block urshield" src="/images/shieldSmall.png"
+                                        alt="">
+                                    {{/if}}
+                                </div>
+                                <div class="col-lg-9 title cols" id="titlelink{{this.id}}"><a target="_blank"
+                                        href={{this.link}}>{{this.title}}</a>
 
-                <!--let's display the notes-->
-                <table id="notes-table" +{{this.id}} class="table table-hover display">
-                  <div class="row" data-id="{{this.id}}">
-                    <div class="col-lg-3"></div>
-                    <div class="col-lg-3 notesheader">Note Title</div>
-                    <div class="col-lg-6 notesheader">Note</div>
-                  </div>
-                  <tbody>
-                    {{#each article.note}}
-                    <!--header row-->
-                    <div class="row" id="nrow" +{{this.id}} data-id="{{this.id}}">
-                      <div class="col-lg-3"></div>
-                      <div class="col-lg-3" id="title{{this.id}}">
-                        {{this.title}}
-                      </div>
-                      <div class="col-lg-5" id="body{{this.id}}">
-                        {{this.body}}
-                      </div>
-                        <!--this is the form to allow for deleting a row.-->
-                      <div class="col-lg-1">
-                        <form action="/deletenote/{{this.id}}" method="post">
-                          <button type="submit" class="btn btn-danger">
-                            <i class="fa-trash-o"></i>
-                          </button>
-                        </form>
-                      </div>
-                    </div>
-                    {{/each}}
-                    <!--this is the form to allow for adding a row.  It will be hiddent until add is clicked.-->
-                    <form action="/articles/{{this.id}}" method="post">
-                    <div class="row">
-                      <div class="col-lg-3"></div>
-                      <div class="col-lg-3">
-                        <input type="text" class="d-none" name="title" id="ntitle{{this.id}}" placeholder="Title"
-                          required>
-                      </div>
-                      <div class="col-lg-5" id="body{{this.id}}">
-                        <textarea type="text" class="d-none" name="body" id="nbody{{this.id}}"
-                          placeholder="Write Note Here" required></textarea>
-                      </div>
-                      <div class="col-lg-1">
-                        <button type="submit" class="btn btn-primary d-none" id="nsave{{this.id}}">Save</button>
-                      </div>
-                    </div>
-                    </form>
-                    <div class="col-lg-12">
-                    <button type="button" style="float:right" class="btn btn-sm btn-primary addnote" data-id={{this.id}}>Add Note</button>
-                    </div>
-                  </tbody>
-                </table>
-
-                <!--div>
-                  <form action="/articles/{{this.id}}" method="post">
-                    <h2>Enter a Note!</h2>
-                    <input type="text" name="title" placeholder="Title" required>
-                    <textarea type="text" name="body" placeholder="Write Note Here" required></textarea>
-
-                    <input type="submit">
-                  </form>
-
-                </div-->
-                <hr>
-                {{/each}}
-              </tbody>
-            </table>
-          </div>
+                                    <div class="col-lg-12 summary cols" id="summary{{this.id}}">
+                                        <p data-id="{{this.id}}">{{this.summary}}</p>
+                                    </div>
+                                    <!--trigger the scrape of new articles-->
+                                    <div class="col-lg-12">
+                                        <button type="button" class="btn btn-info notesbtn" data-toggle="collapse"
+                                            data-target="#notesection{{this.id}}" aria-expanded="false">Simple
+                                            collapsible</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--button type="button" class="btn btn-lg" id="notesbtn" data-toggle="collapse" data-target="#notes-table">Notes</button-->
+                            <!--div class="collapse" id="notes{{this.id}}"-->
+                            <!--let's display the notes-->
+                            <div id="notesection{{this.id}}" class="collapse">
+                                <table id="notes-table{{this.id}}" class="table table-hover display">
+                                    <div class="row" data-id="{{this.id}}">
+                                        <div class="col-lg-3"></div>
+                                        <div class="col-lg-3 notesheader">Note Title</div>
+                                        <div class="col-lg-5 notesheader">Note</div>
+                                    </div>
+                                    <tbody>
+                                        {{#each article.note}}
+                                        <!--header row-->
+                                        <div class="row noterow" id="nrow" +{{this.id}} data-id="{{this.id}}">
+                                            <div class="col-lg-3"></div>
+                                            <div class="col-lg-3 notecol" id="title{{this.id}}">
+                                                {{this.title}}
+                                            </div>
+                                            <div class="col-lg-5 notecol" id="body{{this.id}}">
+                                                {{this.body}}
+                                            </div>
+                                            <!--this is the form to allow for deleting a row.-->
+                                            <div class="col-lg-1">
+                                                <form action="/deletenote/{{this.id}}" method="post">
+                                                    <button type="submit" class="btn btn-danger deletebtn">X</button>
+                                                    <!--i class="fa fa-trash"></i> </button-->
+                                                </form>
+                                            </div>
+                                        </div>
+                                        {{/each}}
+                                    </tbody>
+                                    <!--this is the form to allow for adding a row.  It will be hiddent until add is clicked.-->
+                                    <form action="/articles/{{this.id}}" method="post">
+                                        <div class="row noterow">
+                                            <div class="col-lg-3"></div>
+                                            <div class="col-lg-3 notediv">
+                                                <input type="text" class="d-none notecol" name="title"
+                                                    id="ntitle{{this.id}}" placeholder="Title" required>
+                                            </div>
+                                            <div class="col-lg-5 notediv" id="body{{this.id}}">
+                                                <textarea type="text" class="d-none notecol" name="body"
+                                                    id="nbody{{this.id}}" placeholder="Write Note Here"
+                                                    required></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="row noterow">
+                                            <div class="col-lg-12" style="float:right;">
+                                                <button type="submit" class="btn btn-primary d-none notesave"
+                                                    id="nsave{{this.id}}">Save</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <div class="col-lg-12">
+                                        <button type="button" class="btn btn-sm btn-primary addnote"
+                                            id="addbtn{{this.id}}" data-id={{this.id}}>Add
+                                            Note</button>
+                                    </div>
+                                </table>
+                            </div>
+                            <hr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
+    <footer>MongoScraping the UR news site ((https://news.richmond.edu/releases/index.html)</footer>
 </div>
 
 <!-- MODALS -->
-<!-- Sold Button Modal -->
-<div class="modal" id="soldModal" tabindex="-1" role="dialog">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Please enter buyer information below</h5>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="form-group">
-            <!-- Dropdown button -->
-            <div class="form-group">
-              <label for="category">Select Customer:</label>
-              <select class="custom-select" id="car-customer">
-              </select>
-            </div>
-            <hr>
-            <br>
-            <div class="row">
-              <div class="col">
-                <label>Price</label>
-                <input type="number" class="form-control" id="car-price" required min="10" max="444444">
-              </div>
-
-              <div class="col">
-                <label>Date</label>
-                <input type="date" class="form-control" id="car-date" required>
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" id="modalCloseCust" data-dismiss="modal">Cancel</button>
-            <button type="submit" class="btn btn-primary" id="submitSold">Submit</button>
-            <hr>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
 
 <form action="/articles/{{this.id}}" method="post"></form>
 
 <!-- Confirm Delete Modal -->
 <div class="modal" id="confirmModal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Delete entry</h5>
-      </div>
-      <div class="modal-body">
-        <form action="/deletenote/{{this.id}}" method="post">
-          <p>
-            <h5>Are you sure you want to delete?</h5>
-          </p>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal" id="modalCloseConfirm">Cancel</button>
-            <button type="submit" class="btn btn-primary" id="submit-delete">Submit</button>
-          </div>
-        </form>
-      </div>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete entry</h5>
+            </div>
+            <div class="modal-body">
+                <form action="/deletenote/{{this.id}}" method="post">
+                    <p>
+                        <h5>Are you sure you want to delete?</h5>
+                    </p>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                            id="modalCloseConfirm">Cancel</button>
+                        <button type="submit" class="btn btn-primary" id="submit-delete">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 <!--script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script-->
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-  integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-  integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+<!--script src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script-->
 <script src="/js/app.js"></script>
