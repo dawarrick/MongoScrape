@@ -46,43 +46,75 @@
                                             <p data-id="{{this.id}}">{{this.summary}}</p>
                                         </div>
                                     </div>
+                                    <!--trigger the scrape of new articles-->
                                     <div class="col-lg-12">
-                                        <button type="button" class="btn btn-sm btn-primary addnote"
-                                            id="addbtn{{this.id}}" data-id={{this.id}}>Add
-                                            Note</button>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <button type="button" class="btn btn-sm btn-primary notesbtn"
-                                            id="notesbtn{{this.id}}" data-id={{this.id}}>Notes
-                                        </button>
+                                        <button type="button" class="btn btn-info notesbtn" data-toggle="collapse"
+                                            data-target="#notesection{{this.id}}" aria-expanded="false">Simple
+                                            collapsible</button>
                                     </div>
 
-                                    <!--div class="col-lg-12">
-                                        <button type="button" class="btn btn-info notesbtn" data-id="{{this.id}}"
-                                            id="notesbtn{{this.id}}">Notes</button>
-                                    </div-->
                                 </div>
                                 <!--button type="button" class="btn btn-lg" id="notesbtn" data-toggle="collapse" data-target="#notes-table">Notes</button-->
                                 <!--div class="collapse" id="notes{{this.id}}"-->
                                 <!--let's display the notes-->
-
-                                <div id="notes{{this.id}}">
+                                <div id="notesection{{this.id}}" class="collapse">
                                     <table id="notes-table{{this.id}}" class="table table-hover display">
-                                        <div class="row d-none" id="hrow{{this.id}}" data-id="{{this.id}}">
+                                        <div class="row" data-id="{{this.id}}">
                                             <div class="col-lg-3"></div>
                                             <div class="col-lg-3 notesheader">Note Title</div>
                                             <div class="col-lg-5 notesheader">Note</div>
                                         </div>
-
-                                        <tbody id="brow{{this.id}}">
-
-
+                                        <tbody>
+                                            {{#each article.note}}
+                                            <!--header row-->
+                                            <div class="row noterow" id="nrow" +{{this.id}} data-id="{{this.id}}">
+                                                <div class="col-lg-3"></div>
+                                                <div class="col-lg-3 notecol" id="title{{this.id}}">
+                                                    {{this.title}}
+                                                </div>
+                                                <div class="col-lg-5 notecol" id="body{{this.id}}">
+                                                    {{this.body}}
+                                                </div>
+                                                <!--this is the form to allow for deleting a row.-->
+                                                <div class="col-lg-1">
+                                                    <form action="/deletenote/{{this.id}}" method="post">
+                                                        <button type="submit"
+                                                            class="btn btn-danger deletebtn">X</button>
+                                                        <!--i class="fa fa-trash"></i> </button-->
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            {{/each}}
                                         </tbody>
-
+                                        <!--this is the form to allow for adding a row.  It will be hiddent until add is clicked.-->
+                                        <form action="/articles/{{this.id}}" method="post">
+                                            <div class="row noterow">
+                                                <div class="col-lg-3"></div>
+                                                <div class="col-lg-3 notediv">
+                                                    <input type="text" class="d-none notecol" name="title"
+                                                        id="ntitle{{this.id}}" placeholder="Title" required>
+                                                </div>
+                                                <div class="col-lg-5 notediv" id="body{{this.id}}">
+                                                    <textarea type="text" class="d-none notecol" name="body"
+                                                        id="nbody{{this.id}}" placeholder="Write Note Here"
+                                                        required></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="row noterow">
+                                                <div class="col-lg-12" style="float:right;">
+                                                    <button type="submit" class="btn btn-primary d-none notesave"
+                                                        id="nsave{{this.id}}">Save</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <div class="col-lg-12">
+                                            <button type="button" class="btn btn-sm btn-primary addnote"
+                                                id="addbtn{{this.id}}" data-id={{this.id}}>Add
+                                                Note</button>
+                                        </div>
                                     </table>
                                 </div>
                             </div>
-
                             <hr>
                             {{/each}}
                         </tbody>
@@ -92,60 +124,14 @@
         </div>
     </div>
     <footer>MongoScraping the UR news site ((https://news.richmond.edu/releases/index.html)</footer>
-    <!--    {{#each article.note}} >
-                                            <div class="row noterow" id="nrow" +{{this.id}} data-id="{{this.id}}">
-                                                <div class="col-lg-3"></div>
-                                                <div class="col-lg-3 notecol" id="title{{this.id}}">
-                                                    {{this.title}}
-                                                </div>
-                                                <div class="col-lg-5 notecol" id="body{{this.id}}">
-                                                    {{this.body}}
-                                                </div>
-                                                <!--this is the form to allow for deleting a row.>
-                                                <div class="col-lg-1">
-                                                    <form action="/deletenote/{{this.id}}" method="post">
-                                                        <button type="submit"
-                                                            class="btn btn-danger deletebtn">X</button>
-                                               
-                                                    </form>
-                                                </div>
-                                            </div>
-                                            <!--    {{/each}} -->
-    <!-- MODALS -->
-    <!--add modal -->
-    <div class="modal" id="addModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Add Note</h5>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col">
-                                    <label>Title</label>
-                                    <input type="text" class="form-control" id="titleinput" required>
-                                </div>
-                                <div class="col">
-                                    <label>Note</label>
-                                    <textarea type="text" class="form-control" id="bodyinput" required></textarea>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" id="modalClose"
-                                    data-dismiss="modal">Cancel</button>
-                                <button type="submit" class="btn btn-primary" id="savenote">Submit</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+</div>
 
-    <!-- Confirm Delete Modal -->
-    <!--div class="modal" id="confirmModal" tabindex="-1" role="dialog">
+<!-- MODALS -->
+
+<form action="/articles/{{this.id}}" method="post"></form>
+
+<!-- Confirm Delete Modal -->
+<div class="modal" id="confirmModal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -164,16 +150,15 @@
                 </form>
             </div>
         </div>
-    </div-->
+    </div>
 </div>
 
 <!--script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script-->
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<!--script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script-->
+    crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
     crossorigin="anonymous"></script>
