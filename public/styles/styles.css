@@ -59,6 +59,7 @@ p {
     /*padding-bottom:.5px;*/
     height: 1.75em;
     margin:0;
+    padding:0;
     width:100%
   }
 
@@ -76,7 +77,7 @@ p {
     /*/border: 1px solid#18BC9C;*/
     border: 1px solid rgb(17, 17, 85);
     color:  rgb(17, 17, 85);
-    padding-right:1px;
+    /*padding-right:1px;*/
     padding: 0;
     margin:0;
     width: 100%;
@@ -93,14 +94,17 @@ p {
   }
 
   .addnote {
-    float:right;
-    padding-top:5px;
+    background-color:rgb(17, 17, 85);
+    color:white;
+    float:left;
   }
 
   .notesheader {
     background-color:rgb(17, 17, 85);
     color:white;
     font-size: 1.25em;
+    padding-left:0;
+
   }
   
    

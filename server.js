@@ -208,7 +208,8 @@ app.post("/deletenote/:id", function (req, res) {
   db.Note.deleteOne({ "_id": req.params.id })
     .then(function (dbArticle) {
       // If we were able to successfully update an Article, reload the page
-      res.redirect('/articles');
+      //res.redirect('/articles');
+      return(dbArticle);
     })
     .catch(function (err) {
       // If an error occurred, send it to the client

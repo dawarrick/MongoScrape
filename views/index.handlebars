@@ -46,12 +46,14 @@
                                             <p data-id="{{this.id}}">{{this.summary}}</p>
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
-                                        <button type="button" class="btn btn-sm btn-primary addnote"
+                                    <div class="col-lg-3">
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <button type="button" class="btn btn-sm btn-primary addnote d-none"
                                             id="addbtn{{this.id}}" data-id={{this.id}}>Add
                                             Note</button>
                                     </div>
-                                    <div class="col-lg-12">
+                                    <div class="col-lg-6">
                                         <button type="button" class="btn btn-sm btn-primary notesbtn"
                                             id="notesbtn{{this.id}}" data-id={{this.id}}>Notes
                                         </button>
@@ -78,7 +80,6 @@
 
 
                                         </tbody>
-
                                     </table>
                                 </div>
                             </div>
@@ -92,25 +93,7 @@
         </div>
     </div>
     <footer>MongoScraping the UR news site ((https://news.richmond.edu/releases/index.html)</footer>
-    <!--    {{#each article.note}} >
-                                            <div class="row noterow" id="nrow" +{{this.id}} data-id="{{this.id}}">
-                                                <div class="col-lg-3"></div>
-                                                <div class="col-lg-3 notecol" id="title{{this.id}}">
-                                                    {{this.title}}
-                                                </div>
-                                                <div class="col-lg-5 notecol" id="body{{this.id}}">
-                                                    {{this.body}}
-                                                </div>
-                                                <!--this is the form to allow for deleting a row.>
-                                                <div class="col-lg-1">
-                                                    <form action="/deletenote/{{this.id}}" method="post">
-                                                        <button type="submit"
-                                                            class="btn btn-danger deletebtn">X</button>
-                                               
-                                                    </form>
-                                                </div>
-                                            </div>
-                                            <!--    {{/each}} -->
+
     <!-- MODALS -->
     <!--add modal -->
     <div class="modal" id="addModal" tabindex="-1" role="dialog">
