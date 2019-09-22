@@ -27,7 +27,7 @@ function refreshNotes(data) {
   var newRow = "";
   data.note.forEach(function (ea) {
     newRow = "<div class='row noterow' data-id=" + ea._id + ">";
-    newRow += "<div class='col-lg-3' style='padding:0;margin:0;'></div>";
+    newRow += "<div class='col-lg-3 style='max-width:25%;'></div>";
     newRow += "<div class='col-lg-3 notecol'>" + ea.title + "</div>";
     newRow += "<div class='col-lg-5 notecol'>" + ea.body + "</div>";
     newRow += "<div class='col-lg-1'>";
