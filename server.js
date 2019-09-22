@@ -205,11 +205,11 @@ app.post("/articles/:id", function (req, res) {
 
 app.post("/deletenote/:id", function (req, res) {
   // Delete a note 
-  db.Note.deleteOne({ "_id": req.params.id })
+   db.Note.deleteOne({ "_id": req.params.id })
     .then(function (dbArticle) {
       // If we were able to successfully update an Article, reload the page
       //res.redirect('/articles');
-      return(dbArticle);
+      res.send(dbArticle);
     })
     .catch(function (err) {
       // If an error occurred, send it to the client

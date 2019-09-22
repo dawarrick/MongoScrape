@@ -70,6 +70,7 @@ $(document).ready(function () {
     //  console.log("open " + $(this).attr("open"));
       // Empty the notes from the note section
       $("#hrow" + articleId).addClass("d-none");
+      $("#addbtn" + articleId).addClass("d-none");
       $("#adddiv" + articleId).empty();
       // $("#adddiv" + articleId).remove();
       $("#brow" + articleId).empty();
@@ -91,9 +92,6 @@ $(document).ready(function () {
       // With that done
       .then(function (dbArticle) {
         //repopulate
-        alert('crap')
-        console.log("article "+JSON.stringify(dbArticle))
-        console.log("article ID"+articleId)
         trythis(articleId);
         // $("#notes").empty();
       });
@@ -118,7 +116,7 @@ $(document).ready(function () {
       }
     })
       // With that done
-      .then(function (data) {
+      .then(function () {
         // Log the response
        // console.log(data);
         $("#addModal").hide();
