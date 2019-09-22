@@ -34,49 +34,41 @@
                                     </div>
                                     <div class="col-lg-9 title cols" id="titlelink{{this.id}}"><a target="_blank"
                                             href={{this.link}}>{{this.title}}</a>
-                                        <div class="summary cols">
+        
+                                        <div class="col-lg-12 summary cols" id="summary{{this.id}}">
                                             <p data-id="{{this.id}}">{{this.summary}}</p>
                                         </div>
                                     </div>
 
-
-                                    <!--div class="row cardrow" style="margin-top:-50px;"-->
-                                    <!--div class="col-lg-3 pad"></div>
-                                    <div class="col-lg-9 summary cols" id="summary{{this.id}}">
-                                        <p data-id="{{this.id}}">{{this.summary}}</p>
-                                        <!--/div>
+                                    <!--div class="col-lg-3">
                                     </div-->
-                                </div>
-                            </div>
-                            <div class="row" style="padding-bottom:5px;">
-                                <div class="col-lg-6">
-                                    <button type="button" class="btn btn-sm btn-primary addnote d-none"
-                                        id="addbtn{{this.id}}" data-id={{this.id}}>Add
-                                        Note</button>
-                                </div>
-                                <div class="col-lg-6" style="float:right; width:50%; max-width:50%">
-                                    <button type="button" class="btn btn-sm btn-primary notesbtn"
-                                        id="notesbtn{{this.id}}" data-id={{this.id}}>Notes
-                                    </button>
-                                </div>
-                            </div>
-
-
-
-                            <div id="notes{{this.id}}">
-                                <table id="notes-table{{this.id}}" class="table table-hover display">
-                                    <div class="row hrow d-none" id="hrow{{this.id}}" data-id="{{this.id}}">
-                                        <div class="col-lg-3"></div>
-                                        <div class="col-lg-3 notesheader">Note Title</div>
-                                        <div class="col-lg-5 notesheader">Note</div>
+                                    <div class="col-lg-6">
+                                        <button type="button" class="btn btn-sm btn-primary addnote d-none"
+                                            id="addbtn{{this.id}}" data-id={{this.id}}>Add
+                                            Note</button>
                                     </div>
-                                    <!--notes details will be dynamically built-->
-                                    <tbody id="brow{{this.id}}">
+                                    <div class="col-lg-6" style="float:right; width:50%; max-width:50%">
+                                        <button type="button" class="btn btn-sm btn-primary notesbtn"
+                                            id="notesbtn{{this.id}}" data-id={{this.id}}>Notes
+                                        </button>
+                                    </div>
+
+                                </div>
+
+                                <div id="notes{{this.id}}">
+                                    <table id="notes-table{{this.id}}" class="table table-hover display">
+                                        <div class="row hrow d-none" id="hrow{{this.id}}" data-id="{{this.id}}">
+                                            <div class="col-lg-3"></div>
+                                            <div class="col-lg-3 notesheader">Note Title</div>
+                                            <div class="col-lg-5 notesheader">Note</div>
+                                        </div>
+                                        <!--notes details will be dynamically built-->
+                                        <tbody id="brow{{this.id}}">
 
 
-                                    </tbody>
-                                </table>
-
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
 
                             <hr>
