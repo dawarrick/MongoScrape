@@ -4,7 +4,6 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 // Using the Schema constructor, create a new UserSchema object
-// This is similar to a Sequelize model
 var ArticleSchema = new Schema({
   // `title` is required and of type String
   title: {
@@ -26,7 +25,7 @@ var ArticleSchema = new Schema({
     type: String,
     required: true
   },
-  //this is the date it was originally added, or if it was updated.
+  //this is the date it was originally added.
   dateAdded: {
     type: Date,
     required: true

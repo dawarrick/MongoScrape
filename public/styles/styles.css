@@ -69,7 +69,6 @@ p {
     width:100%
   }
 
-
   .notesave {
     height:1.65;
     width: 1.65;
@@ -123,8 +122,11 @@ p {
     width:100%
   }
   
-   
-/* Database Search Card */
+  .modal-header {
+    background-color: rgb(17, 17, 85);
+    color: white;
+  }
+
 .card {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }

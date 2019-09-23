@@ -50,9 +50,44 @@ var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/MongoScrape";
 
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
+
+
+/* - this is an example of the data
+<div class="item" name="f16559" uniqueid="16559"><a target="_self"
+  href="http://news.richmond.edu/releases/article/-/16559/urs-weinstein-rosenthal-forum-features-best-selling-author-andrew-soloman.html">
+  <div class="thumbnail">
+
+    <div class="responsiveImg" data-alt=""
+      data-img-121="https://d1gtq9mqg5x3oe.cloudfront.net/images/_articles/communications/releases/2019/9-september/weinstein-rosenthal/thumbnails/W-R_19_thumb-121x121.jpg"
+      data-img-165="https://d1gtq9mqg5x3oe.cloudfront.net/images/_articles/communications/releases/2019/9-september/weinstein-rosenthal/thumbnails/W-R_19_thumb-165x165.jpg"
+      data-img-200="https://d1gtq9mqg5x3oe.cloudfront.net/images/_articles/communications/releases/2019/9-september/weinstein-rosenthal/thumbnails/W-R_19_thumb-200x200.jpg"
+      data-img-320="https://d1gtq9mqg5x3oe.cloudfront.net/images/_articles/communications/releases/2019/9-september/weinstein-rosenthal/thumbnails/W-R_19_thumb-320x320.jpg"
+      data-img-410="https://d1gtq9mqg5x3oe.cloudfront.net/images/_articles/communications/releases/2019/9-september/weinstein-rosenthal/thumbnails/W-R_19_thumb-410x410.jpg"
+      data-img-500="https://d1gtq9mqg5x3oe.cloudfront.net/images/_articles/communications/releases/2019/9-september/weinstein-rosenthal/thumbnails/W-R_19_thumb-500x500.jpg"
+      data-img-59="https://d1gtq9mqg5x3oe.cloudfront.net/images/_articles/communications/releases/2019/9-september/weinstein-rosenthal/thumbnails/W-R_19_thumb-59x59.jpg"
+      data-type="1_1"><noscript><img alt=""
+        src="https://d1gtq9mqg5x3oe.cloudfront.net/images/_articles/communications/releases/2019/9-september/weinstein-rosenthal/thumbnails/W-R_19_thumb-320x320.jpg" /></noscript>
+    </div>
+    <script type="text/javascript">
+      var images = document.getElementsByClassName('responsiveImg');
+      var img = images[images.length - 1];
+      resizeImg(img);
+                            </script>
+  </div>
+  <div class="contentWrap">
+    <div class="title">UR's Weinstein-Rosenthal Forum Features Best-Selling Author Andrew
+                                Soloman</div>
+    <div class="subtitle"></div>
+    <div class="preview">The University of Richmond annual Weinstein-Rosenthal Forum on Faith,
+        Ethics and Global Society will feature keynote speaker Andrew Solomon to discuss radical
+                                compassion.</div>
+  </div>
+</a></div>*/
+
 // Routes
 
-// A GET route for scraping the echoJS website
+// A GET route for scraping the U of R news website
+
 //this will be the default route
 app.get("/", function (req, res) {
   console.log('scraping');
@@ -90,19 +125,6 @@ app.get("/", function (req, res) {
       if (result.title && result.link) {
         //Create a new one if it doesn't exist, or update an existing in case something changed with the article
         //title is unique identifier
-        /*              db.Article.updateOne(
-                        { title: result.title }, // query
-                        { $set: result },
-                        { upsert: true,
-                          setDefaultsOnInsert: true
-                        }, // options
-                        function (err, object) {
-                          if (err) {
-                            console.warn(err.message);  // returns error if no matching object found
-                          } else {
-                            console.dir(object);
-                          }
-                        });*/
         //using create because update and insert was updating the date added and messing up the sorting.
         db.Article.create(result)
           .then(function (dbArticle) {
@@ -118,27 +140,10 @@ app.get("/", function (req, res) {
       }
     });
     // Send a message to the client
-    // res.send("scraped");
     res.redirect('/articles');
   });
 });
 
-// Route for getting all Articles from the db
-/*app.get("/", function (req, res) {
-  // Grab every document in the Articles collection. Sort by the most recent first
-  db.Article.find({}).sort({ dateAdded: -1, _id: 1 })
-    .then(function (dbArticle) {
-      // If we were able to successfully find Articles, send them back to the client
-      // res.json(dbArticle);
-      res.render("index", {
-        articles: dbArticle
-      });
-    })
-    .catch(function (err) {
-      // If an error occurred, send it to the client
-      res.json(err);
-    });
-});*/
 
 // Route for getting all Articles from the db
 app.get("/articles", function (req, res) {
@@ -147,7 +152,6 @@ app.get("/articles", function (req, res) {
     .populate("note")
     .then(function (dbArticle) {
       // If we were able to successfully find Articles, send them back to the client
-      //console.log(JSON.stringify(dbArticle));
       res.render("index", {
         articles: dbArticle
       });
@@ -167,8 +171,6 @@ app.get("/articles/:id", function (req, res) {
     .populate("note")
     .then(function (dbArticle) {
       // If we were able to successfully find an Article with the given id, send it back to the client
-      //res.render("index", {
-      //  articles: dbArticle
       res.json(dbArticle);
     })
     .catch(function (err) {
@@ -180,16 +182,12 @@ app.get("/articles/:id", function (req, res) {
 // Route for saving/updating an Article's associated Note
 app.post("/articles/:id", function (req, res) {
   // Create a new note and pass the req.body to the entry
-  /*console.log("req.param.id "+JSON.stringify(req.param.id))
-  console.log("body "+JSON.stringify(req.body))*/
+
   db.Note.create(req.body)
     .then(function (dbNote) {
       // If a Note was created successfully, find the Article with an `_id` equal to `req.params.id`. add a new Note
       // { new: true } tells the query that we want it to return the updated User -- it returns the original by default
-      // Since our mongoose query returns a promise, we can chain another `.then` which receives the result of the query
-      /*console.log("req.param.id2 "+req.param.id)
-      console.log("note2 "+dbNote._id)*/
-      //return db.Library.findOneAndUpdate({}, { $push: { books: dbBook._id } }, { new: true });
+      // Since our mongoose query returns a promise, we can chain another `.then` which receives the result of the query;
       return db.Article.findOneAndUpdate({ _id: req.params.id }, { $push: { note: dbNote._id } }, { new: true });
     })
     .then(function (dbArticle) {
@@ -205,7 +203,7 @@ app.post("/articles/:id", function (req, res) {
 
 app.post("/deletenote/:id", function (req, res) {
   // Delete a note 
-   db.Note.deleteOne({ "_id": req.params.id })
+  db.Note.deleteOne({ "_id": req.params.id })
     .then(function (dbArticle) {
       // If we were able to successfully update an Article, reload the page
       //res.redirect('/articles');

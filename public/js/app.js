@@ -133,11 +133,6 @@ $(document).ready(function () {
 
   $(document).on("click", ".addnote", function () {
     var noteID = $(this).attr("data-id");
-    //console.log(`note id ${noteID} title ${title} body ${body}`)
-    /* $("#aform" + noteID).removeClass("d-none");
-     $("#ntitle" + noteID).removeClass("d-none");
-     $("#nbody" + noteID).removeClass("d-none");
-     $("#nsave" + noteID).removeClass("d-none");*/
     $("#addbtn" + noteID).addClass("d-none");
 
     //display modal for adding note
