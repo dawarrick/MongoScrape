@@ -92,6 +92,7 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true }, { useMongoClient:true }
 // A GET route for scraping the U of R news website
 
 //this will be the default route
+/*
 app.get("/", function (req, res) {
   console.log('scraping');
   // First, we grab the body of the html with axios
@@ -145,6 +146,23 @@ app.get("/", function (req, res) {
     // Send a message to the client
     res.redirect('/articles');
   });
+});
+*/
+
+app.get("/", function (req, res) {
+  // Grab every document in the Articles collection. Sort by the most recent first
+  db.Article.find({}).sort({ dateAdded: -1, _id: 1 })
+    .populate("note")
+    .then(function (dbArticle) {
+      // If we were able to successfully find Articles, send them back to the client
+      res.render("index", {
+        articles: dbArticle
+      });
+    })
+    .catch(function (err) {
+      // If an error occurred, send it to the client
+      res.json(err);
+    });
 });
 
 
