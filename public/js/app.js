@@ -31,9 +31,7 @@ function refreshNotes(data) {
     newRow += "<div class='col-lg-3 notecol'>" + ea.title + "</div>";
     newRow += "<div class='col-lg-5 notecol'>" + ea.body + "</div>";
     newRow += "<div class='col-lg-1'>";
-    /*newRow += "<form action='/deletenote/" + ea._id + "' method='post'>";*/
     newRow += "<button class='btn btn-danger deletebtn' data-id=" + ea._id + " article-id=" + articleId +">X</button>";
-    /*newRow += "</form>";*/
     newRow += "</div>"
     $(section).append(newRow);
     console.log("newrow " + newRow)
@@ -56,23 +54,18 @@ $(document).ready(function () {
 
     // Save the id from the p tag
     var articleId = $(this).attr("data-id");
-    //alert('clicked notes '+articleId)
-   // console.log("open " + $(this).attr("open"));
-
     //if notes are not open, open and populate, otherwise close
     if ($(this).attr("open") === undefined) {
       $(this).attr("open", "yes");
-    //  console.log("open " + $(this).attr("open"));
+
       trythis(articleId);
     }
     else {
       $(this).removeAttr("open");
-    //  console.log("open " + $(this).attr("open"));
-      // Empty the notes from the note section
+       // Empty the notes from the note section
       $("#hrow" + articleId).addClass("d-none");
       $("#addbtn" + articleId).addClass("d-none");
       $("#adddiv" + articleId).empty();
-      // $("#adddiv" + articleId).remove();
       $("#brow" + articleId).empty();
     }
   });
@@ -93,7 +86,6 @@ $(document).ready(function () {
       .then(function (dbArticle) {
         //repopulate
         trythis(articleId);
-        // $("#notes").empty();
       });
   });
 
@@ -102,7 +94,6 @@ $(document).ready(function () {
     event.preventDefault();
 
     var thisId = $("#savenote").attr("articleID");
-    //alert('saving '+thisId)
 
     // Run a POST request to change the note, using what's entered in the inputs
     $.ajax({
@@ -117,18 +108,13 @@ $(document).ready(function () {
     })
       // With that done
       .then(function () {
-        // Log the response
-       // console.log(data);
         $("#addModal").hide();
-        // Empty the notes section
         // Also, remove the values entered in the input and textarea for note entry
         $("#titleinput").val("");
         $("#bodyinput").val("");
         trythis(thisId);
-        // $("#notes").empty();
       });
   });
-
 
 
   $(document).on("click", ".addnote", function () {
@@ -142,19 +128,7 @@ $(document).ready(function () {
   });
 
 
-  /*
-  //make sure they want to delete the selected note.
-  $("body").off().on('click', '.deleteButton', function (event) {
-    event.preventDefault();
-   
-    //get the database key for the row
-    var noteID = $(this).attr("data-id");
-    $("#submit-delete").attr("noteID", noteID);
-    // Confirm modal to pop up
-    $("#confirmModal").show();
-  });*/
-
-  //Closes modal on Cancel button click
+   //Closes modal on Cancel button click
   $("#modalClose").on("click", function () {
     $("#addModal").hide();
   });
