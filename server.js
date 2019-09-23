@@ -46,9 +46,12 @@ app.use(express.static("public"));
 //mongoose.connect("mongodb://localhost/MongoScrape", { useNewUrlParser: true });
 
 // If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/MongoScrape";
+//var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/MongoScrape";
 
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://mongoscrape:mongoscrape1@ds143767.mlab.com:43767/heroku_cttt7gwb";
+//mongodb://<dbuser>:<dbpassword>@ds143767.mlab.com:43767/heroku_cttt7gwb
+
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true }, { userMongoClient:true });
 
 
 
