@@ -52,41 +52,9 @@ console.log("Mongodb_uri: "+MONGODB_URI)
 //var MONGODB_URI = process.env.MONGODB_URI || "mongodb://mongoscrape:mongoscrape1@ds143767.mlab.com:43767/heroku_cttt7gwb";
 //mongodb://<dbuser>:<dbpassword>@ds143767.mlab.com:43767/heroku_cttt7gwb
 
-var connect = mongoose.connect(MONGODB_URI, { useNewUrlParser: true }, { useMongoClient:true });
+var connect = mongoose.connect(MONGODB_URI, { useMongoClient:true });
 console.log("connect "+connect)
 
-
-/* - this is an example of the data
-<div class="item" name="f16559" uniqueid="16559"><a target="_self"
-  href="http://news.richmond.edu/releases/article/-/16559/urs-weinstein-rosenthal-forum-features-best-selling-author-andrew-soloman.html">
-  <div class="thumbnail">
-
-    <div class="responsiveImg" data-alt=""
-      data-img-121="https://d1gtq9mqg5x3oe.cloudfront.net/images/_articles/communications/releases/2019/9-september/weinstein-rosenthal/thumbnails/W-R_19_thumb-121x121.jpg"
-      data-img-165="https://d1gtq9mqg5x3oe.cloudfront.net/images/_articles/communications/releases/2019/9-september/weinstein-rosenthal/thumbnails/W-R_19_thumb-165x165.jpg"
-      data-img-200="https://d1gtq9mqg5x3oe.cloudfront.net/images/_articles/communications/releases/2019/9-september/weinstein-rosenthal/thumbnails/W-R_19_thumb-200x200.jpg"
-      data-img-320="https://d1gtq9mqg5x3oe.cloudfront.net/images/_articles/communications/releases/2019/9-september/weinstein-rosenthal/thumbnails/W-R_19_thumb-320x320.jpg"
-      data-img-410="https://d1gtq9mqg5x3oe.cloudfront.net/images/_articles/communications/releases/2019/9-september/weinstein-rosenthal/thumbnails/W-R_19_thumb-410x410.jpg"
-      data-img-500="https://d1gtq9mqg5x3oe.cloudfront.net/images/_articles/communications/releases/2019/9-september/weinstein-rosenthal/thumbnails/W-R_19_thumb-500x500.jpg"
-      data-img-59="https://d1gtq9mqg5x3oe.cloudfront.net/images/_articles/communications/releases/2019/9-september/weinstein-rosenthal/thumbnails/W-R_19_thumb-59x59.jpg"
-      data-type="1_1"><noscript><img alt=""
-        src="https://d1gtq9mqg5x3oe.cloudfront.net/images/_articles/communications/releases/2019/9-september/weinstein-rosenthal/thumbnails/W-R_19_thumb-320x320.jpg" /></noscript>
-    </div>
-    <script type="text/javascript">
-      var images = document.getElementsByClassName('responsiveImg');
-      var img = images[images.length - 1];
-      resizeImg(img);
-                            </script>
-  </div>
-  <div class="contentWrap">
-    <div class="title">UR's Weinstein-Rosenthal Forum Features Best-Selling Author Andrew
-                                Soloman</div>
-    <div class="subtitle"></div>
-    <div class="preview">The University of Richmond annual Weinstein-Rosenthal Forum on Faith,
-        Ethics and Global Society will feature keynote speaker Andrew Solomon to discuss radical
-                                compassion.</div>
-  </div>
-</a></div>*/
 
 // Routes
 
