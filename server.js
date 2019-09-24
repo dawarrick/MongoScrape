@@ -52,7 +52,7 @@ console.log("Mongodb_uri: "+MONGODB_URI)
 //var MONGODB_URI = process.env.MONGODB_URI || "mongodb://mongoscrape:mongoscrape1@ds143767.mlab.com:43767/heroku_cttt7gwb";
 //mongodb://<dbuser>:<dbpassword>@ds143767.mlab.com:43767/heroku_cttt7gwb
 
-var connect = mongoose.connect(MONGODB_URI, { useMongoClient:true });
+var connect = mongoose.connect(MONGODB_URI, {  useNewUrlParser: true});
 console.log("connect "+connect)
 
 
