@@ -17,8 +17,6 @@ var cheerio = require("cheerio");
 // Require all models
 var db = require("./models");
 
-var PORT = 3000;
-
 // Initialize Express
 var app = express();
 
@@ -206,6 +204,6 @@ app.post("/deletenote/:id", function (req, res) {
 });
 
 // Start the server
-app.listen(process.env.PORT || PORT), function () {
-  console.log("App running on port " + process.env.PORT || PORT + "!");
+app.listen(MONGODB_URI, function () {
+  console.log("App running on port " + MONGODB_URI + "!");
 });
