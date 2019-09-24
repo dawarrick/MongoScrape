@@ -22,7 +22,7 @@
                         <tbody>
                             {{#each articles as |article articleId|}}
                             <div>
-                                <div class="row cardrow" id="row" +{{this.id}} data-id="{{this.id}}">
+                                <div class="row cardrow" id="row{{this.id}}" data-id="{{this.id}}">
                                     <div class="col-lg-3" id="thumbnail{{this.id}}">
                                         <!--if no thumbnail image, display the UR shield-->
                                         {{#if thumbnail}}

@@ -4,9 +4,9 @@
 
 **MongoScrape** was developed as a homework assignment for the University of Richmond Web Development Bootcamp (May - October 2019 cohort).
 
-Github repository - https://github.com/dawarrick/MongoScrape.git
+Deployed at - https://serene-gorge-28258.herokuapp.com
 
-Deployed at - ????
+Github repository - https://github.com/dawarrick/MongoScrape.git
 
 
 **How it works**
@@ -16,7 +16,7 @@ Deployed at - ????
 * It will display the title/headline that is a hyperlink to the article, a summary, and a thumbnail picture.  If the thumbnail is not available, it will display the UR logo.
 * The data is stored in a MongoDB database that is comprised of two tables, articles and notes.  Notes are associated with articles.
 * The data will be added to the database, but it will not allow duplicates based on title.
-* It allows users to make notes associated with the headlines for all to see.  They can also delete comments.
+* By pushing the notes button, the user will see any notes associated with the article.  It allows the user to add additional notes, or delete notes by clicking on the corresponding red X.
 
 
 ## Technology Stack
@@ -28,6 +28,7 @@ Deployed at - ????
 * Mongoose - ORM to handle communication with the database.
 * Cheerio - for scraping the selected website.
 * Morgan - used for logging the commands.  Helpful for debugging.
+* mLab - MongoDB remote database connection through Heroku
 * Heroku - deployment environment.
 
 # Thanks for visiting, and please check out my app!
