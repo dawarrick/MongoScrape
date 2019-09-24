@@ -48,11 +48,12 @@ app.use(express.static("public"));
 // If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/MongoScrape";
 
+console.log("Mongodb_uri: "+MONGODB_URI)
 //var MONGODB_URI = process.env.MONGODB_URI || "mongodb://mongoscrape:mongoscrape1@ds143767.mlab.com:43767/heroku_cttt7gwb";
 //mongodb://<dbuser>:<dbpassword>@ds143767.mlab.com:43767/heroku_cttt7gwb
 
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true }, { useMongoClient:true });
-
+var connect = mongoose.connect(MONGODB_URI, { useNewUrlParser: true }, { useMongoClient:true });
+console.log("connect "+connect)
 
 
 /* - this is an example of the data
@@ -92,7 +93,7 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true }, { useMongoClient:true }
 // A GET route for scraping the U of R news website
 
 //this will be the default route
-/*
+
 app.get("/", function (req, res) {
   console.log('scraping');
   // First, we grab the body of the html with axios
@@ -147,9 +148,9 @@ app.get("/", function (req, res) {
     res.redirect('/articles');
   });
 });
-*/
 
-app.get("/", function (req, res) {
+
+/*app.get("/", function (req, res) {
   // Grab every document in the Articles collection. Sort by the most recent first
   db.Article.find({}).sort({ dateAdded: -1, _id: 1 })
     .populate("note")
@@ -163,7 +164,7 @@ app.get("/", function (req, res) {
       // If an error occurred, send it to the client
       res.json(err);
     });
-});
+});*/
 
 
 // Route for getting all Articles from the db
