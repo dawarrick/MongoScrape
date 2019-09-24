@@ -12,11 +12,13 @@ Github repository - https://github.com/dawarrick/MongoScrape.git
 **How it works**
 
 * Upon system load, it will scrape and display headline information from the University of Richmond news website (https://news.richmond.edu/releases/index.html).
-* The articles will be displayed from most recent to oldest based on when it was pulled into the app, so the newly scraped are at the top.
+* The articles will be displayed from most recent to oldest based on the date it was pulled into the app, so the newly scraped are at the top.
 * It will display the title/headline that is a hyperlink to the article, a summary, and a thumbnail picture.  If the thumbnail is not available, it will display the UR logo.
 * The data is stored in a MongoDB database that is comprised of two tables, articles and notes.  Notes are associated with articles.
 * The data will be added to the database, but it will not allow duplicates based on title.
-* By pushing the notes button (clicking on the paragraph was not intuitive), the user will see any notes associated with the article.  It allows the user to add additional notes, or delete notes by clicking on the corresponding red X.
+* By pushing the notes button (clicking on the paragraph was not intuitive), the user will see any notes associated with the article.  
+* Clicking on the Add Note button will bring up a modal for entry.
+* Clicking on the note corresponding red X will delete the note.  I opted not to ask them for confirmation, since these are just notes.
 * If the notes are open, clicking on the Notes button again will close the associated notes.
 * After add or delete, the notes section will be updated and the screen display left in the same place.
 
