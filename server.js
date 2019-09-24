@@ -44,14 +44,16 @@ app.use(express.static("public"));
 //mongoose.connect("mongodb://localhost/MongoScrape", { useNewUrlParser: true });
 
 // If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
-var MONGODB_URI = "mongodb://mongoscrape:mongoscrape1@ds143767.mlab.com:43767/heroku_cttt7gwb" || "mongodb://localhost/MongoScrape";
+//var MONGODB_URI = "mongodb://mongoscrape:mongoscrape1@ds143767.mlab.com:43767/heroku_cttt7gwb" || "mongodb://localhost/MongoScrape";
+
+var MONGODB_URI = "mongodb://heroku_cttt7gwb:eaeqaqoog1loqu734ll84c0bb0@ds143767.mlab.com:43767/heroku_cttt7gwb" || "mongodb://localhost/MongoScrape";
 
 console.log("Mongodb_uri: "+MONGODB_URI)
 //var MONGODB_URI = process.env.MONGODB_URI || "mongodb://mongoscrape:mongoscrape1@ds143767.mlab.com:43767/heroku_cttt7gwb";
 //mongodb://<dbuser>:<dbpassword>@ds143767.mlab.com:43767/heroku_cttt7gwb
 
 var connect = mongoose.connect(MONGODB_URI, {  useNewUrlParser: true});
-console.log("connect "+connect)
+console.log("connect "+JSON.stringify(connect))
 
 
 // Routes
