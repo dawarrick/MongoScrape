@@ -56,11 +56,22 @@ p {
     float:left;*/
   }
 
+  .btnrow {
+   padding-bottom: 5px;
+  }
+
   .notesbtn {
     background-color: rgb(17, 17, 85);
     color: white;
-    float:right;
+    float: right;
   }
+
+  .notebtncol {
+  width:50%; 
+  max-width:50%;
+  float:right;
+  }
+
   .noterow {
     /*padding-bottom:.5px;*/
     height: 1.75em;
@@ -94,7 +105,7 @@ p {
     color: white;
     line-height: 1.00;
     text-align:center;
-    float:right;
+    float:left;
     height:1.65em;
     width: 1.65;
   }
@@ -127,8 +138,8 @@ p {
     color: white;
   }
 
-.card {
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+.card-body {
+  padding:0;
 }
   #searchBody {
     display: inline-flex;
