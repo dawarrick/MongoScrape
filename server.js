@@ -46,14 +46,17 @@ app.use(express.static("public"));
 // If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
 //var MONGODB_URI = "mongodb://mongoscrape:mongoscrape1@ds143767.mlab.com:43767/heroku_cttt7gwb" || "mongodb://localhost/MongoScrape";
 
-var MONGODB_URI = "mongodb://heroku_cttt7gwb:eaeqaqoog1loqu734ll84c0bb0@ds143767.mlab.com:43767/heroku_cttt7gwb" || "mongodb://localhost/MongoScrape";
+MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/MongoScrape";
+//mongodb://heroku_cttt7gwb:eaeqaqoog1loqu734ll84c0bb0@ds143767.mlab.com:43767/heroku_cttt7gwb
 
 console.log("Mongodb_uri: "+MONGODB_URI)
 //var MONGODB_URI = process.env.MONGODB_URI || "mongodb://mongoscrape:mongoscrape1@ds143767.mlab.com:43767/heroku_cttt7gwb";
 //mongodb://<dbuser>:<dbpassword>@ds143767.mlab.com:43767/heroku_cttt7gwb
 
-var connect = mongoose.connect(MONGODB_URI, {  useNewUrlParser: true});
-console.log("connect "+JSON.stringify(connect))
+connect = mongoose.connect(MONGODB_URI, {  useNewUrlParser: true});
+
+const PORT = process.env.PORT || 3000;
+//console.log("connect "+JSON.stringify(connect))
 
 
 // Routes
@@ -206,6 +209,6 @@ app.post("/deletenote/:id", function (req, res) {
 });
 
 // Start the server
-app.listen(MONGODB_URI, function () {
-  console.log("App running on port " + MONGODB_URI + "!");
+app.listen(PORT, function () {
+  console.log("App running on port " + PORT +"!");
 });
