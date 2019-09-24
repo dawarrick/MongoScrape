@@ -44,19 +44,14 @@ app.use(express.static("public"));
 //mongoose.connect("mongodb://localhost/MongoScrape", { useNewUrlParser: true });
 
 // If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
-//var MONGODB_URI = "mongodb://mongoscrape:mongoscrape1@ds143767.mlab.com:43767/heroku_cttt7gwb" || "mongodb://localhost/MongoScrape";
 
 MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/MongoScrape";
-//mongodb://heroku_cttt7gwb:eaeqaqoog1loqu734ll84c0bb0@ds143767.mlab.com:43767/heroku_cttt7gwb
-
-console.log("Mongodb_uri: "+MONGODB_URI)
-//var MONGODB_URI = process.env.MONGODB_URI || "mongodb://mongoscrape:mongoscrape1@ds143767.mlab.com:43767/heroku_cttt7gwb";
-//mongodb://<dbuser>:<dbpassword>@ds143767.mlab.com:43767/heroku_cttt7gwb
 
 connect = mongoose.connect(MONGODB_URI, {  useNewUrlParser: true});
 
+//Heroku sets up own port
+
 const PORT = process.env.PORT || 3000;
-//console.log("connect "+JSON.stringify(connect))
 
 
 // Routes
@@ -119,23 +114,6 @@ app.get("/", function (req, res) {
     res.redirect('/articles');
   });
 });
-
-
-/*app.get("/", function (req, res) {
-  // Grab every document in the Articles collection. Sort by the most recent first
-  db.Article.find({}).sort({ dateAdded: -1, _id: 1 })
-    .populate("note")
-    .then(function (dbArticle) {
-      // If we were able to successfully find Articles, send them back to the client
-      res.render("index", {
-        articles: dbArticle
-      });
-    })
-    .catch(function (err) {
-      // If an error occurred, send it to the client
-      res.json(err);
-    });
-});*/
 
 
 // Route for getting all Articles from the db
