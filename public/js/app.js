@@ -21,9 +21,9 @@ function refreshNotes(data) {
 
   var section = "#brow" + articleId;
   //first remove what is currently displayed
-   $( "tbody.brow"+articleId ).children().remove();
+  $("tbody.brow" + articleId).children().remove();
 
-   //add in the notes
+  //add in the notes
   var newRow = "";
   data.note.forEach(function (ea) {
     newRow = "<div class='row noterow' data-id=" + ea._id + ">";
@@ -37,6 +37,17 @@ function refreshNotes(data) {
   });
 
 };
+
+//format the scraped date
+function formatDate(data) {
+  if (data === data.trim()) {
+    return data.substr(2, 19);
+  }
+  else {
+    return data.trim();
+  }
+}
+
 
 $(document).ready(function () {
 
@@ -116,6 +127,8 @@ $(document).ready(function () {
   });
 
 
+
+
   $(document).on("click", ".addnote", function () {
     var noteID = $(this).attr("data-id");
     $("#addbtn" + noteID).addClass("d-none");
@@ -131,6 +144,15 @@ $(document).ready(function () {
   $("#modalClose").on("click", function () {
     $("#addModal").hide();
   });
+
+
+  //format the date field
+  $(".dateformat").each(function () {
+    var data = $(this).text();
+    var reformatted = formatDate(data);
+    $(this).text(reformatted);
+  });
+
 
 });
 

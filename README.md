@@ -12,8 +12,9 @@ Github repository - https://github.com/dawarrick/MongoScrape.git
 **How it works**
 
 * Upon system load, it will scrape and display headline information from the University of Richmond news website (https://news.richmond.edu/releases/index.html).  An example of the data is in the content.html file in Github
-* The articles will be displayed from most recent to oldest based on the date it was pulled into the app, so the newly scraped are at the top.
+* The articles will be displayed from most recent to oldest based on the date it was pulled into the app, so the newly scraped are at the top. 
 * It will display the title/headline that is a hyperlink to the article, a summary, and a thumbnail picture.  If the thumbnail is not available, it will display the UR logo.
+* The date the article was scraped from the site will be displayed so you know what is new.
 * The data is stored in a MongoDB database that is comprised of two tables, articles and notes.  Notes are associated with articles.
 * The data will be added to the database, but it will not allow duplicates based on title.
 * By pushing the notes button (clicking on the paragraph was not intuitive so I went with a button), the user will see any notes associated with the article.  
