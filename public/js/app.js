@@ -98,12 +98,12 @@ $(document).ready(function () {
       });
   });
 
-  // When you click the savenote button
-  $(document).off().on("click", "#savenote", function () {
+  // When you click the submit button on add
+  $('#addModal').off().on('submit', function (event) {
     event.preventDefault();
 
     var thisId = $("#savenote").attr("articleID");
-
+ 
     // Run a POST request to change the note, using what's entered in the inputs
     $.ajax({
       method: "POST",
@@ -125,8 +125,6 @@ $(document).ready(function () {
         getNotes(thisId);
       });
   });
-
-
 
 
   $(document).on("click", ".addnote", function () {

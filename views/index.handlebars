@@ -43,7 +43,7 @@
 
                             <div class="row btnrow">
                                 <div class="col-lg-3">Date Scraped:
-                                   <span class="dateformat">{{this.dateAdded}}</span>
+                                    <span class="dateformat">{{this.dateAdded}}</span>
                                 </div>
                                 <div class="col-lg-3">
                                     <button type="button" class="btn btn-sm btn-primary addnote d-none"
@@ -83,48 +83,48 @@
     </div>
     <footer>MongoScraping the UR news site <a target="_blank" href="https://news.richmond.edu/releases/index.html">
             https://news.richmond.edu/releases/index.html</a></footer>
-
-    <!-- MODALS -->
-    <!--add modal -->
-    <div class="modal" id="addModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Add Note</h5>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col">
-                                    <label>Title</label>
-                                    <input type="text" class="form-control" id="titleinput" required>
-                                </div>
-                                <div class="col">
-                                    <label>Note</label>
-                                    <textarea type="text" class="form-control" id="bodyinput" required></textarea>
-                                </div>
+</div>
+<!-- MODALS -->
+<!--add modal -->
+<div class="modal" id="addModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add Note</h5>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col">
+                                <label>Title</label>
+                                <input type="text" class="form-control" id="titleinput" required>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" id="modalClose"
-                                    data-dismiss="modal">Cancel</button>
-                                <button type="submit" class="btn btn-primary" id="savenote">Submit</button>
+                            <div class="col">
+                                <label>Note</label>
+                                <textarea type="text" class="form-control" id="bodyinput" required></textarea>
                             </div>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" id="modalClose"
+                            data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary" id="savenote">Submit</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-    <!--script src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script-->
-    <script src="/js/app.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+<!--script src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script-->
+<script src="/js/app.js"></script>
